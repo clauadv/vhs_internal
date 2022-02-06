@@ -73,6 +73,7 @@ namespace sdk {
 	inline u_object* sword_bp;
 	inline u_object* magic_sphere_bp;
 	inline u_object* life_essence_bp;
+	inline u_object* medkit_point_bp;
 
 	bool initialize();
 	void process_event(void* object, void* u_function, void* params);

@@ -21,4 +21,5 @@ namespace visuals::survivor {
 namespace visuals::entities {
 	void run(const sdk::u_world* world, sdk::a_pawn* my_player, sdk::a_player_controller* player_controller);
 	void name(sdk::a_actor* actor, sdk::a_actor* my_player, sdk::a_player_controller* player_controller);
+	void debug(sdk::a_actor* actor, sdk::a_actor* my_player, sdk::a_player_controller* player_controller);
 }

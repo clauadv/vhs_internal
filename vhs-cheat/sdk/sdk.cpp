@@ -74,6 +74,7 @@ namespace sdk {
 		sdk::sword_bp = sdk::object_array->find_object(_("Class Game.DemonSwordWeapon"));
 		sdk::magic_sphere_bp = sdk::object_array->find_object(_("Class Game.MagicSphere"));
 		sdk::life_essence_bp = sdk::object_array->find_object(_("Class Game.LifeEssencePowerup"));
+		sdk::medkit_point_bp = sdk::object_array->find_object(_("Class Game.MedKitPoint"));
 
 		hooks::initialize();
 

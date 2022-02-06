@@ -53,7 +53,7 @@ void visuals::killer::name(const sdk::vector_2d& head, const float width, const 
 	const auto distance = my_player->get_distance_to_string(actor);
 
 	std::wstring name;
-	name.append(actor->get_name().c_str()).append(L" [").append(distance).append(L"]");
+	name.append(actor->get_character_name().c_str()).append(L" [").append(distance).append(L"]");
 
 	const auto text_size = render::text_size(name.c_str());
 	render::text(head.x + (width / 2.f) - (text_size.x / 2.f), head.y + height + 2.f, name.c_str(), { 255, 0, 0, 255 });

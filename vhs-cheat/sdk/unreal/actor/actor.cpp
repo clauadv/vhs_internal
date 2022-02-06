@@ -85,7 +85,7 @@ std::wstring sdk::a_actor::get_distance_to_string(sdk::a_actor* actor) {
 	return ss.str();
 }
 
-sdk::u_string sdk::a_actor::get_name() const {
+sdk::u_string sdk::a_actor::get_character_name() const {
 	if (this->is_a(sdk::werewolf_bp))
 		return L"werewolf";
 	if (this->is_a(sdk::toad_bp))
@@ -134,6 +134,8 @@ sdk::u_string sdk::a_actor::get_name() const {
 		return L"eyeball";
 	if (this->is_a(sdk::life_essence_bp))
 		return L"luma";
+	if (this->is_a(sdk::medkit_point_bp))
+		return L"healing_station";
 
 	return L"";
 }
