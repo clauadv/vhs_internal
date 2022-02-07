@@ -78,7 +78,7 @@ void visuals::killer::doll_name(sdk::a_pawn* my_player, sdk::a_actor* actor, sdk
 		std::wstring name;
 		name.append(actor->get_character_name().c_str()).append(L" [").append(distance_string).append(L"]");
 
-		render::text(position.x, position.y, name.c_str(), { 52, 134, 235, 255 });
+		render::text(position.x, position.y, name.c_str(), { 255, 0, 0, 255 });
 	}
 }
 
