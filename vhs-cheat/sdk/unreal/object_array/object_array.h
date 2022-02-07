@@ -7,12 +7,12 @@ namespace sdk {
 
 	struct u_object {
 		static sdk::u_object_array* objects;
-		void** vf_table;
-		std::int32_t flags;
-		std::int32_t internal_index;
-		sdk::u_class* _class;
-		sdk::u_name name;
-		sdk::u_object* outer;
+		void** vf_table; // 0x00(0x08)
+		std::int32_t flags; // 0x08(0x04)
+		std::int32_t internal_index; // 0xc(0x4)
+		sdk::u_class* _class; // 0x10(0x8)
+		sdk::u_name name; // 0x18(0x8)
+		sdk::u_object* outer; // 0x20(0x8)
 
 		std::string get_name() const;
 		std::string get_full_name() const;

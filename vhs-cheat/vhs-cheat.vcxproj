@@ -113,7 +113,9 @@
     <ClCompile Include="render\render.cpp" />
     <ClCompile Include="sdk\misc\bones.cpp" />
     <ClCompile Include="sdk\unreal\actor\actor.cpp" />
+    <ClCompile Include="sdk\unreal\base_char\base_char.cpp" />
     <ClCompile Include="sdk\unreal\canvas\canvas.cpp" />
+    <ClCompile Include="sdk\unreal\discord\discord.cpp" />
     <ClCompile Include="sdk\unreal\name_pool\name_pool.cpp" />
     <ClCompile Include="sdk\unreal\object_array\object_array.cpp" />
     <ClCompile Include="sdk\unreal\skeletal_mesh_component\skeletal_mesh_component.cpp" />
@@ -145,6 +147,7 @@
     <ClInclude Include="sdk\unreal\canvas\canvas.h" />
     <ClInclude Include="sdk\unreal\class\class.h" />
     <ClInclude Include="sdk\unreal\controller\controller.h" />
+    <ClInclude Include="sdk\unreal\discord\discord.h" />
     <ClInclude Include="sdk\unreal\field\field.h" />
     <ClInclude Include="sdk\unreal\game_instance\game_instance.h" />
     <ClInclude Include="sdk\unreal\game_state_base\game_state_base.h" />

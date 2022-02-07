@@ -4,6 +4,7 @@
 #include "minhook/minhook.h"
 
 namespace hooks {
+	inline std::once_flag flag;
 	bool initialize();
 	bool release();
 

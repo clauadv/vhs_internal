@@ -22,7 +22,7 @@ sdk::rotator sdk::a_actor::get_rotation() {
 		sdk::rotator return_value;
 	} params{};
 
-	auto flags = fn->flags;
+	const auto flags = fn->flags;
 	fn->flags |= 0x00000400;
 
 	sdk::process_event(this, fn, &params);
@@ -90,8 +90,10 @@ sdk::u_string sdk::a_actor::get_character_name() const {
 		return L"werewolf";
 	if (this->is_a(sdk::toad_bp))
 		return L"wart";
-	if (this->is_a(sdk::doll_minion_bp) || this->is_a(sdk::doll_master_bp))
+	if (this->is_a(sdk::doll_master_bp))
 		return L"doll_master";
+	if (this->is_a(sdk::doll_minion_bp))
+		return L"doll_minion";
 
 	if (this->is_a(sdk::cheerleader_bp))
 		return L"gloria";
@@ -136,6 +138,8 @@ sdk::u_string sdk::a_actor::get_character_name() const {
 		return L"luma";
 	if (this->is_a(sdk::medkit_point_bp))
 		return L"healing_station";
+	if (this->is_a(sdk::doll_master_trap_bp))
+		return L"trap";
 
 	return L"";
 }

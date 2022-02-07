@@ -58,6 +58,12 @@
     <ClCompile Include="vhs.cpp">
       <Filter>files</Filter>
     </ClCompile>
+    <ClCompile Include="sdk\unreal\base_char\base_char.cpp">
+      <Filter>files\sdk\unreal\base_char</Filter>
+    </ClCompile>
+    <ClCompile Include="sdk\unreal\discord\discord.cpp">
+      <Filter>files\sdk\unreal\discord</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sdk\sdk.h">
@@ -183,6 +189,9 @@
     <ClInclude Include="sdk\other\view_info.h">
       <Filter>files\sdk\other</Filter>
     </ClInclude>
+    <ClInclude Include="sdk\unreal\discord\discord.h">
+      <Filter>files\sdk\unreal\discord</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="files">
@@ -283,6 +292,9 @@
     </Filter>
     <Filter Include="files\utils\libraries">
       <UniqueIdentifier>{d72d5ca6-c59e-4899-9a2f-bca183e0acc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="files\sdk\unreal\discord">
+      <UniqueIdentifier>{99494894-a287-4e3a-86f0-017f3db84c6d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -37,6 +37,7 @@
 #include "unreal/class/class.h"
 #include "unreal/canvas/canvas.h"
 #include "unreal/base_char/base_char.h"
+#include "unreal/discord/discord.h"
 
 namespace sdk {
 	inline std::uintptr_t get_viewpoint;
@@ -47,8 +48,8 @@ namespace sdk {
 	// killers
 	inline u_object* werewolf_bp;
 	inline u_object* toad_bp;
-	inline u_object* doll_minion_bp;
 	inline u_object* doll_master_bp;
+	inline u_object* doll_minion_bp;
 
 	// survivors
 	inline u_object* cheerleader_bp;
@@ -74,6 +75,7 @@ namespace sdk {
 	inline u_object* magic_sphere_bp;
 	inline u_object* life_essence_bp;
 	inline u_object* medkit_point_bp;
+	inline u_object* doll_master_trap_bp;
 
 	bool initialize();
 	void process_event(void* object, void* u_function, void* params);

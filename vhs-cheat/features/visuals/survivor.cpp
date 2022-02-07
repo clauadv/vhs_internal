@@ -7,15 +7,15 @@ void visuals::survivor::run(const sdk::u_world* world, sdk::a_pawn* my_player, s
 		if (!actor || actor->root_component == nullptr) continue;
 		if (actor == my_player) continue;
 
+		const auto pawn = actor->instigator;
+		if (!pawn) continue;
+
 		std::call_once(flag, []() {
 			bones::initialize();
 		});
 
-		const auto pawn = actor->instigator;
-		if (!pawn) continue;
-
 		if (actor->is_a(sdk::cheerleader_bp) || actor->is_a(sdk::jock_bp) || actor->is_a(sdk::outsider_bp) ||
-		                                       actor->is_a(sdk::punk_bp) || actor->is_a(sdk::virgin_bp)) {
+											   actor->is_a(sdk::punk_bp) || actor->is_a(sdk::virgin_bp)) {
 			const auto mesh = pawn->mesh;
 			if (!mesh) continue;
 
@@ -24,6 +24,10 @@ void visuals::survivor::run(const sdk::u_world* world, sdk::a_pawn* my_player, s
 
 			const auto character = reinterpret_cast<sdk::a_base_char*>(actor->instigator);
 			if (!character) continue;
+
+			if (GetAsyncKeyState(VK_F9) & 1) {
+				character->remove_injury(false, true);
+			}
 
 			const auto head = mesh->get_bone(bones::survivor::head, player_controller);
 			const auto foot = mesh->get_bone(bones::survivor::Root, player_controller);

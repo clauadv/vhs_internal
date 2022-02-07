@@ -55,6 +55,19 @@ void __stdcall hooks::post_render::hook(sdk::u_object* viewport_client, sdk::u_c
 
 	render::text(50.f, 50.f, L"vhs-cheat", { 255, 255, 255, 255 });
 
+	const auto discord = reinterpret_cast<sdk::u_discord*>(viewport_client);
+	if (!discord) return;
+
+	std::call_once(flag, [&discord]() {
+		// mai gata ce atata colectare de date
+		discord->destroy_discord_object();
+
+		discord->create_discord_object(940296659693363221, false);
+		discord->set_state(L"driving an infernus");
+		discord->set_details(L"pe ruby nephrite");
+		discord->set_image(L"gtasa");
+	});
+
 	const auto world = *reinterpret_cast<sdk::u_world**>(sdk::world);
 	if (!world) return;
 

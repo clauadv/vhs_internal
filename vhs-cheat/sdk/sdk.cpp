@@ -48,8 +48,8 @@ namespace sdk {
 		// killers
 		sdk::werewolf_bp = sdk::object_array->find_object(_("BlueprintGeneratedClass Werewolf_BP.Werewolf_BP_C"));
 		sdk::toad_bp = sdk::object_array->find_object(_("BlueprintGeneratedClass Toad_BP.Toad_BP_C"));
-		sdk::doll_minion_bp = sdk::object_array->find_object(_("BlueprintGeneratedClass DollMinion_BP.DollMinion_BP_C"));
 		sdk::doll_master_bp = sdk::object_array->find_object(_("BlueprintGeneratedClass DollMaster_BP.DollMaster_BP_C"));
+		sdk::doll_minion_bp = sdk::object_array->find_object(_("BlueprintGeneratedClass DollMinion_BP.DollMinion_BP_C"));
 
 		// survivors
 		sdk::cheerleader_bp = sdk::object_array->find_object(_("BlueprintGeneratedClass Cheerleader_BP.Cheerleader_BP_C"));
@@ -75,6 +75,7 @@ namespace sdk {
 		sdk::magic_sphere_bp = sdk::object_array->find_object(_("Class Game.MagicSphere"));
 		sdk::life_essence_bp = sdk::object_array->find_object(_("Class Game.LifeEssencePowerup"));
 		sdk::medkit_point_bp = sdk::object_array->find_object(_("Class Game.MedKitPoint"));
+		sdk::doll_master_trap_bp = sdk::object_array->find_object(_("BlueprintGeneratedClass DollMasterTrap_BP.DollMasterTrap_BP_C"));
 
 		hooks::initialize();
 

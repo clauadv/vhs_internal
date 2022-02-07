@@ -1,4 +1,5 @@
 #pragma once
+#include "../actor/actor.h"
 
 namespace sdk {
 	struct a_player_state : sdk::a_actor {

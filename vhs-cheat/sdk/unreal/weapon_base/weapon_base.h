@@ -1,4 +1,5 @@
 #pragma once
+#include "../actor/actor.h"
 
 namespace sdk {
 	enum EWeaponTypeEnum {

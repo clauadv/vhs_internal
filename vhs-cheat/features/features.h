@@ -8,6 +8,7 @@ namespace visuals::killer {
 	void run(const sdk::u_world* world, sdk::a_pawn* my_player, sdk::a_player_controller* player_controller);
 	void box(const sdk::vector_2d& head, float width, float height);
 	void name(const sdk::vector_2d& head, float width, float height, sdk::a_pawn* my_player, sdk::a_actor* actor);
+	void doll_name(sdk::a_pawn* my_player, sdk::a_actor* actor, sdk::a_player_controller* player_controller);
 	void skeleton(const sdk::a_actor* actor, sdk::a_player_controller* player_controller, sdk::u_skeletal_mesh_component* mesh);
 }
 

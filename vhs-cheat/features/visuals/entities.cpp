@@ -16,7 +16,6 @@ void visuals::entities::run(const sdk::u_world* world, sdk::a_pawn* my_player, s
 			if (actor == my_player) continue;
 
 			name(actor, my_player, player_controller);
-			// debug(actor, my_player, player_controller);
 		}
 	}
 }
@@ -27,7 +26,7 @@ void visuals::entities::name(sdk::a_actor* actor, sdk::a_actor* my_player, sdk::
 		actor->is_a(sdk::basket_bp) || actor->is_a(sdk::station_base_bp) || actor->is_a(sdk::flamethrower_bp) ||
 		actor->is_a(sdk::molotov_bp) || actor->is_a(sdk::ray_gun_bp) || actor->is_a(sdk::cross_bp) ||
 		actor->is_a(sdk::sword_bp) || actor->is_a(sdk::magic_sphere_bp) || actor->is_a(sdk::life_essence_bp) ||
-		actor->is_a(sdk::medkit_point_bp)) {
+		actor->is_a(sdk::medkit_point_bp) || actor->is_a(sdk::doll_master_trap_bp)) {
 
 		const auto location = actor->get_location();
 		const auto distance = my_player->get_distance_to(actor);

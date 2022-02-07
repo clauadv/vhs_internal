@@ -1,4 +1,6 @@
 #pragma once
+#include "../player_state/player_state.h"
+#include "../actor/actor.h"
 
 namespace sdk {
 	struct u_skeletal_mesh_component;
