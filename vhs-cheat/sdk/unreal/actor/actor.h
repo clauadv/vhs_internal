@@ -5,6 +5,7 @@
 #include "../scene_component/scene_component.h"
 
 namespace sdk {
+	struct color;
 	struct a_pawn;
 
 	struct a_actor : u_object {
@@ -18,6 +19,6 @@ namespace sdk {
 		void get_bounds(bool only_colliding_components, sdk::vector* origin, sdk::vector* extent);
 		float get_distance_to(sdk::a_actor* actor);
 		std::wstring get_distance_to_string(sdk::a_actor* actor);
-		sdk::u_string get_character_name() const;
+		std::pair<sdk::u_string, sdk::color> get_character_name() const;
 	};
 }

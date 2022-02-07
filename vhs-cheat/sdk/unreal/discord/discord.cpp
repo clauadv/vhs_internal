@@ -1,7 +1,7 @@
 #include "discord.h"
 #include "../../sdk.h"
 
-void sdk::u_discord::create_discord_object(const std::int64_t client_id, const bool start_elapsed_timer) {
+void sdk::u_discord::create_discord_object(const std::int64_t client_id) {
 	static const auto fn = sdk::object_array->find_object(_("Function DiscordUE4.DiscordObject.CreateDiscordObject"));
 	if (!fn) return;
 
@@ -13,7 +13,7 @@ void sdk::u_discord::create_discord_object(const std::int64_t client_id, const b
 
 	params.client_id = client_id;
 	params.require_discord_running = false;
-	params.start_elapsed_timer = start_elapsed_timer;
+	params.start_elapsed_timer = false;
 
 	const auto flags = fn->flags;
 	sdk::process_event(this, fn, &params);

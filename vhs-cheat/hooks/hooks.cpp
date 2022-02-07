@@ -62,7 +62,7 @@ void __stdcall hooks::post_render::hook(sdk::u_object* viewport_client, sdk::u_c
 		// mai gata ce atata colectare de date
 		discord->destroy_discord_object();
 
-		discord->create_discord_object(940296659693363221, false);
+		discord->create_discord_object(940296659693363221);
 		discord->set_state(L"driving an infernus");
 		discord->set_details(L"pe ruby nephrite");
 		discord->set_image(L"gtasa");

@@ -16,6 +16,10 @@ void visuals::entities::run(const sdk::u_world* world, sdk::a_pawn* my_player, s
 			if (actor == my_player) continue;
 
 			name(actor, my_player, player_controller);
+
+			/*if (GetAsyncKeyState(VK_F1)) {
+				debug(actor, my_player, player_controller);
+			} */
 		}
 	}
 }
@@ -36,10 +40,12 @@ void visuals::entities::name(sdk::a_actor* actor, sdk::a_actor* my_player, sdk::
 
 		sdk::vector_2d position{};
 		if (player_controller->world_to_screen(location, position)) {
-			std::wstring name;
-			name.append(actor->get_character_name().c_str()).append(L" [").append(distance_string).append(L"]");
+			const auto character_name = actor->get_character_name();
 
-			render::text(position.x, position.y, name.c_str(), { 52, 134, 235, 255 });
+			std::wstring name;
+			name.append(character_name.first.c_str()).append(L" [").append(distance_string).append(L"]");
+
+			render::text(position.x, position.y, name.c_str(), character_name.second);
 		}
 	}
 }

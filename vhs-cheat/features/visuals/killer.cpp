@@ -14,18 +14,8 @@ void visuals::killer::run(const sdk::u_world* world, sdk::a_pawn* my_player, sdk
 			bones::initialize();
 		});
 
-		if (actor->is_a(sdk::doll_minion_bp)) {
-			const auto mesh = pawn->mesh;
-			if (!mesh) continue;
-
-			const auto state = pawn->player_state;
-			if (!state) continue;
-
-			doll_name(my_player, actor, player_controller);
-		}
-
 		if (actor->is_a(sdk::werewolf_bp) || actor->is_a(sdk::toad_bp) ||
-			actor->is_a(sdk::doll_master_bp)) {
+			actor->is_a(sdk::doll_master_bp) || actor->is_a(sdk::doll_minion_bp)) {
 
 			const auto mesh = pawn->mesh;
 			if (!mesh) continue;
@@ -37,20 +27,21 @@ void visuals::killer::run(const sdk::u_world* world, sdk::a_pawn* my_player, sdk
 			if (!character) continue;
 
 			const auto bone = bones::get_bone_array(actor);
+			if (bone.empty()) continue;
 
-			const auto head = mesh->get_bone(bones::killer::dollmaster::Head_M, player_controller);
-			const auto foot = mesh->get_bone(bones::killer::dollmaster::Root, player_controller);
+			const auto head = mesh->get_bone(bone.at(0).first, player_controller);
+			const auto root = mesh->get_bone(0, player_controller);
 
-			if (head.x == 0.f && head.y == 0.f) continue;
-			if (foot.x == 0.f && foot.y == 0.f) continue;
+			if (head.is_zero()) continue;
+			if (root.is_zero()) continue;
 
-			const float height = abs(foot.y - head.y);
+			const float height = abs(root.y - head.y);
 			const float width = height * 0.5f;
 
 			name(head, width, height, my_player, actor);
 			skeleton(actor, player_controller, mesh);
 
-			//character->force_thirdperson_camera = true;
+			// character->force_thirdperson_camera = true;
 		}
 	}
 }
@@ -60,26 +51,14 @@ void visuals::killer::box(const sdk::vector_2d& head, const float width, const f
 }
 
 void visuals::killer::name(const sdk::vector_2d& head, const float width, const float height, sdk::a_pawn* my_player, sdk::a_actor* actor) {
+	const auto character_name = actor->get_character_name();
 	const auto distance = my_player->get_distance_to_string(actor);
 
 	std::wstring name;
-	name.append(actor->get_character_name().c_str()).append(L" [").append(distance).append(L"]");
+	name.append(character_name.first.c_str()).append(L" [").append(distance).append(L"]");
 
 	const auto text_size = render::text_size(name.c_str());
-	render::text(head.x + (width / 2.f) - (text_size.x / 2.f), head.y + height + 2.f, name.c_str(), { 255, 0, 0, 255 });
-}
-
-void visuals::killer::doll_name(sdk::a_pawn* my_player, sdk::a_actor* actor, sdk::a_player_controller* player_controller) {
-	const auto location = actor->get_location();
-	const auto distance_string = my_player->get_distance_to_string(actor);
-
-	sdk::vector_2d position{};
-	if (player_controller->world_to_screen(location, position)) {
-		std::wstring name;
-		name.append(actor->get_character_name().c_str()).append(L" [").append(distance_string).append(L"]");
-
-		render::text(position.x, position.y, name.c_str(), { 255, 0, 0, 255 });
-	}
+	render::text(head.x + (width / 2.f) - (text_size.x / 2.f), head.y + height + 2.f, name.c_str(), character_name.second);
 }
 
 void visuals::killer::skeleton(const sdk::a_actor* actor, sdk::a_player_controller* player_controller, sdk::u_skeletal_mesh_component* mesh) {

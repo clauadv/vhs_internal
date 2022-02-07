@@ -1,6 +1,6 @@
 #include "bones.h"
 
-std::array<std::vector < std::pair < int, int > >, 4> bone_array;
+std::array<std::vector < std::pair < int, int > >, 5> bone_array;
 
 void bones::initialize() {
 	{
@@ -275,8 +275,44 @@ void bones::initialize() {
 	}
 
 	{
-		// survivor bones
+		// dollmaster minion bones
 		auto& bone = bone_array[3];
+
+		bone.emplace_back(std::make_pair(killer::dollminion::head_m, killer::dollminion::neck_m));
+		bone.emplace_back(std::make_pair(killer::dollminion::neck_m, killer::dollminion::spine1_m));
+		bone.emplace_back(std::make_pair(killer::dollminion::spine1_m, killer::dollminion::pelvis));
+
+		// left
+		{
+			bone.emplace_back(std::make_pair(killer::dollminion::neck_m, killer::dollminion::shoulder_l));
+			bone.emplace_back(std::make_pair(killer::dollminion::shoulder_l, killer::dollminion::elbow_l));
+			bone.emplace_back(std::make_pair(killer::dollminion::elbow_l, killer::dollminion::wrist_l));
+
+			bone.emplace_back(std::make_pair(killer::dollminion::pelvis, killer::dollminion::hip_l));
+			bone.emplace_back(std::make_pair(killer::dollminion::hip_l, killer::dollminion::knee_l));
+			bone.emplace_back(std::make_pair(killer::dollminion::knee_l, killer::dollminion::ankle_l));
+			bone.emplace_back(std::make_pair(killer::dollminion::ankle_l, killer::dollminion::toes_l));
+			bone.emplace_back(std::make_pair(killer::dollminion::toes_l, killer::dollminion::toesend_l));
+		}
+
+
+		// right
+		{
+			bone.emplace_back(std::make_pair(killer::dollminion::neck_m, killer::dollminion::shoulder_r));
+			bone.emplace_back(std::make_pair(killer::dollminion::shoulder_r, killer::dollminion::elbow_r));
+			bone.emplace_back(std::make_pair(killer::dollminion::elbow_r, killer::dollminion::wrist_r));
+
+			bone.emplace_back(std::make_pair(killer::dollminion::pelvis, killer::dollminion::hip_r));
+			bone.emplace_back(std::make_pair(killer::dollminion::hip_r, killer::dollminion::knee_r));
+			bone.emplace_back(std::make_pair(killer::dollminion::knee_r, killer::dollminion::ankle_r));
+			bone.emplace_back(std::make_pair(killer::dollminion::ankle_r, killer::dollminion::toes_r));
+			bone.emplace_back(std::make_pair(killer::dollminion::toes_r, killer::dollminion::toesend_r));
+		}
+	}
+
+	{
+		// survivor bones
+		auto& bone = bone_array[4];
 
 		bone.emplace_back(std::make_pair(survivor::head, survivor::neck_01));
 		bone.emplace_back(std::make_pair(survivor::neck_01, survivor::spine_01));
@@ -377,9 +413,13 @@ std::vector < std::pair < int, int > >& bones::get_bone_array(const sdk::a_actor
 		return bone_array[2];
 	}
 
+	if (actor->is_a(sdk::doll_minion_bp)) {
+		return bone_array[3];
+	}
+
 	if (actor->is_a(sdk::cheerleader_bp) || actor->is_a(sdk::jock_bp) || actor->is_a(sdk::outsider_bp) ||
 		actor->is_a(sdk::punk_bp) || actor->is_a(sdk::virgin_bp)) {
 
-		return bone_array[3];
+		return bone_array[4];
 	}
 }

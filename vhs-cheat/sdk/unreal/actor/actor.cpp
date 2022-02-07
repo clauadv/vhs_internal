@@ -85,61 +85,61 @@ std::wstring sdk::a_actor::get_distance_to_string(sdk::a_actor* actor) {
 	return ss.str();
 }
 
-sdk::u_string sdk::a_actor::get_character_name() const {
+std::pair<sdk::u_string, sdk::color> sdk::a_actor::get_character_name() const {
 	if (this->is_a(sdk::werewolf_bp))
-		return L"werewolf";
+		return { L"werewolf", { 255, 0, 0, 255} };
 	if (this->is_a(sdk::toad_bp))
-		return L"wart";
+		return { L"wart", { 255, 0, 0, 255} };
 	if (this->is_a(sdk::doll_master_bp))
-		return L"doll_master";
+		return { L"doll_master", { 255, 0, 0, 255} };
 	if (this->is_a(sdk::doll_minion_bp))
-		return L"doll_minion";
+		return { L"doll_minion", { 255, 0, 0, 255} };
 
 	if (this->is_a(sdk::cheerleader_bp))
-		return L"gloria";
+		return { L"gloria", { 255, 255, 255, 255} };
 	if (this->is_a(sdk::jock_bp))
-		return L"brett";
+		return { L"brett", { 255, 255, 255, 255} };
 	if (this->is_a(sdk::outsider_bp))
-		return L"jess";
+		return { L"jess", { 255, 255, 255, 255} };
 	if (this->is_a(sdk::punk_bp))
-		return L"leo";
+		return { L"leo", { 255, 255, 255, 255} };
 	if (this->is_a(sdk::virgin_bp))
-		return L"faith";
+		return { L"faith", { 255, 255, 255, 255} };
 
 	if (this->is_a(sdk::lockbox_bp))
-		return L"lockbox";
+		return { L"lockbox", { 52, 134, 235, 255} };
 	if (this->is_a(sdk::noisemaker_bp))
-		return L"noise_maker";
+		return { L"noise_maker", { 52, 134, 235, 255} };
 	if (this->is_a(sdk::pills_bp))
-		return L"candy_bar";
+		return { L"candy_bar", { 52, 134, 235, 255} };
 	if (this->is_a(sdk::adrenaline_bp))
-		return L"pop_can";
+		return { L"pop_can", { 52, 134, 235, 255} };
 	if (this->is_a(sdk::walkie_bp))
-		return L"walkie_talkie";
+		return { L"walkie_talkie", { 52, 134, 235, 255} };
 	if (this->is_a(sdk::vending_machine_bp))
-		return L"vending_machine";
+		return { L"vending_machine", { 52, 134, 235, 255} };
 	if (this->is_a(sdk::basket_bp))
-		return L"trashbox";
+		return { L"trashbox", { 52, 134, 235, 255} };
 	if (this->is_a(sdk::station_base_bp))
-		return L"station_base";
+		return { L"station_base", { 52, 134, 235, 255} };
 	if (this->is_a(sdk::flamethrower_bp))
-		return L"flamethrower";
+		return { L"flamethrower", { 52, 134, 235, 255} };
 	if (this->is_a(sdk::molotov_bp))
-		return L"molotov";
+		return { L"molotov", { 52, 134, 235, 255} };
 	if (this->is_a(sdk::ray_gun_bp))
-		return L"ray_gun";
+		return { L"ray_gun", { 52, 134, 235, 255} };
 	if (this->is_a(sdk::cross_bp))
-		return L"cross";
+		return { L"cross", { 52, 134, 235, 255} };
 	if (this->is_a(sdk::sword_bp))
-		return L"sword";
+		return { L"sword", { 52, 134, 235, 255} };
 	if (this->is_a(sdk::magic_sphere_bp))
-		return L"eyeball";
+		return { L"eyeball", { 52, 134, 235, 255} };
 	if (this->is_a(sdk::life_essence_bp))
-		return L"luma";
+		return { L"luma", { 52, 134, 235, 255} };
 	if (this->is_a(sdk::medkit_point_bp))
-		return L"healing_station";
+		return { L"healing_station", { 52, 134, 235, 255} };
 	if (this->is_a(sdk::doll_master_trap_bp))
-		return L"trap";
+		return { L"trap", { 255, 0, 0, 255} };
 
-	return L"";
+	return { L"", { 0, 0, 0, 0 } };
 }
