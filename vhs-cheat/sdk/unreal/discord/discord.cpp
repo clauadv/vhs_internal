@@ -1,5 +1,4 @@
-#include "discord.h"
-#include "../../sdk.h"
+#include <pch.h>
 
 void sdk::u_discord::create_discord_object(const std::int64_t client_id) {
 	static const auto fn = sdk::object_array->find_object(_("Function DiscordUE4.DiscordObject.CreateDiscordObject"));

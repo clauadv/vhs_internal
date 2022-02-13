@@ -1,3 +1,4 @@
+#include <pch.h>
 #include "utils.h"
 
 std::uintptr_t utils::pattern_scan(const std::uintptr_t address, const char* signature, const bool relative) {
@@ -49,9 +50,9 @@ std::uintptr_t utils::pattern_scan(const std::uintptr_t address, const char* sig
 bool utils::console::initialize(const std::string& title) {
 	AllocConsole();
 
-	freopen_s(reinterpret_cast<_iobuf**>(__acrt_iob_func(0)), "conin$", "r", __acrt_iob_func(0));
-	freopen_s(reinterpret_cast<_iobuf**>(__acrt_iob_func(1)), "conout$", "w", __acrt_iob_func(1));
-	freopen_s(reinterpret_cast<_iobuf**>(__acrt_iob_func(2)), "conout$", "w", __acrt_iob_func(2));
+	freopen_s(reinterpret_cast<_iobuf**>(__acrt_iob_func(0)), _("conin$"), _("r"), __acrt_iob_func(0));
+	freopen_s(reinterpret_cast<_iobuf**>(__acrt_iob_func(1)), _("conout$"), _("w"), __acrt_iob_func(1));
+	freopen_s(reinterpret_cast<_iobuf**>(__acrt_iob_func(2)), _("conout$"), _("w"), __acrt_iob_func(2));
 
 
 	SetConsoleTitleA(title.c_str());

@@ -1,29 +1,8 @@
-#include "sdk.h"
+#include <pch.h>
 #include "../hooks/hooks.h"
+#include "../utils/utils.h"
 
 namespace sdk {
-	bool sdk::a_player_controller::world_to_screen(const sdk::vector& world, sdk::vector_2d& screen) {
-		static const auto fn = sdk::object_array->find_object(_("Function Engine.PlayerController.ProjectWorldLocationToScreen"));
-		if (!fn) return false;
-
-		struct {
-			vector world;
-			vector_2d screen;
-			bool player_viewport_relative;
-			bool return_value;
-		} params{};
-
-		params.world = world;
-		params.screen = screen;
-		params.player_viewport_relative = false;
-
-		sdk::process_event(this, fn, &params);
-
-		screen = params.screen;
-
-		return params.return_value;
-	}
-
 	bool initialize() {
 		const auto main = reinterpret_cast<std::uintptr_t>(LI_FN(GetModuleHandleA)(nullptr));
 		if (!main) return false;
@@ -37,10 +16,10 @@ namespace sdk {
 		sdk::world = reinterpret_cast<decltype(sdk::world)>(utils::pattern_scan(main, _("48 8B 1D ? ? ? ? 48 85 DB 74 3B 41 B0 01 33 D2 48 8B CB E8"), true));
 		if (!sdk::world) return false;
 
-		sdk::get_bone_matrix = utils::pattern_scan(main, "48 8B C4 48 89 58 08 48 89 70 10 57 48 81 EC ? ? ? ? F6");
+		sdk::get_bone_matrix = utils::pattern_scan(main, _("48 8B C4 48 89 58 08 48 89 70 10 57 48 81 EC ? ? ? ? F6"));
 		if (!sdk::get_bone_matrix) return false;
 
-		sdk::get_viewpoint = utils::pattern_scan(main, "4C 8B DC 53 55 56 57 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 84 24 ? ? ? ? 4D 89 7B D8");
+		sdk::get_viewpoint = utils::pattern_scan(main, _("4C 8B DC 53 55 56 57 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 84 24 ? ? ? ? 4D 89 7B D8"));
 		if (!sdk::get_viewpoint) return false;
 
 		sdk::font = sdk::object_array->find_object(_("Font Roboto.Roboto"));
@@ -57,7 +36,7 @@ namespace sdk {
 		sdk::outsider_bp = sdk::object_array->find_object(_("BlueprintGeneratedClass Outsider_BP.Outsider_BP_C"));
 		sdk::punk_bp = sdk::object_array->find_object(_("BlueprintGeneratedClass Punk_BP.Punk_BP_C"));
 		sdk::virgin_bp = sdk::object_array->find_object(_("BlueprintGeneratedClass Virgin_BP.Virgin_BP_C"));
-		
+
 		// props
 		sdk::lockbox_bp = sdk::object_array->find_object(_("Class Game.SearchableLockbox"));
 		sdk::noisemaker_bp = sdk::object_array->find_object(_("Class Game.NoisemakerPickup"));

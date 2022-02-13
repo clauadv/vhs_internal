@@ -1,7 +1,9 @@
 #pragma once
-#include "./math.h"
 
 namespace sdk {
+	struct vector;
+	struct rotator;
+
 	enum EStereoscopicPass {
 		eSSP_FULL,
 		eSSP_LEFT_EYE,

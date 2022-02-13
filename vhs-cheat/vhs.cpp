@@ -1,36 +1,36 @@
-#include <thread>
+#include <pch.h>
 #include "hooks/hooks.h"
 
-unsigned long WINAPI initialize(void* instance) {
+void initialize(const HMODULE module) {
 	try {
 		// utils::console::initialize("vhs-cheat");
 		sdk::initialize();
 	}
 
 	catch (const std::runtime_error& error) {
-		MessageBoxA(nullptr, error.what(), ("vhs-cheat"), MB_OK | MB_ICONERROR);
-		FreeLibraryAndExitThread(static_cast<HMODULE>(instance), 0);
+		LI_FN(MessageBoxA)(nullptr, error.what(), _("vhs-cheat"), MB_OK | MB_ICONERROR);
+		LI_FN(FreeLibraryAndExitThread)(module, 0);
 	}
 
-	while (!GetAsyncKeyState(VK_END))
+	while (!LI_FN(GetAsyncKeyState)(VK_END))
 		std::this_thread::sleep_for(std::chrono::milliseconds(50));
 
-	FreeLibraryAndExitThread(static_cast<HMODULE>(instance), 0);
+	LI_FN(FreeLibraryAndExitThread)(module, 0);
 }
 
 bool DllMain(const HMODULE module, const std::uint32_t call_reason, void* reserved [[maybe_unused]] ) {
-	DisableThreadLibraryCalls(module);
+	LI_FN(DisableThreadLibraryCalls)(module);
 
 	switch (call_reason) {
 		case DLL_PROCESS_ATTACH:
-		if (const auto handle = CreateThread(nullptr, NULL, initialize, module, NULL, nullptr))
-			CloseHandle(handle);
-		break;
+			if (const auto handle = LI_FN(CreateThread)(nullptr, NULL, reinterpret_cast<unsigned long(__stdcall*)(void*)>(initialize), module, NULL, nullptr))
+				LI_FN(CloseHandle)(handle);
+			break;
 		case DLL_PROCESS_DETACH:
-		hooks::release();
-		break;
+			hooks::release();
+			break;
 		default:
-		break;
+			break;
 	}
 
 	return true;

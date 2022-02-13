@@ -2,7 +2,9 @@
 #include <vector>
 #include <array>
 
-#include "../sdk.h"
+namespace sdk {
+	struct a_actor;
+}
 
 namespace bones {
 	void initialize();

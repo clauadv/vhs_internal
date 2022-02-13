@@ -1,5 +1,7 @@
+#include <pch.h>
 #include "hooks.h"
 #include "../features/features.h"
+#include "../utils/utils.h"
 
 hooks::post_render::fn post_render_original = nullptr;
 hooks::view_point::fn view_point_original;
@@ -53,7 +55,7 @@ bool hooks::release() {
 void __stdcall hooks::post_render::hook(sdk::u_object* viewport_client, sdk::u_canvas* canvas) {
 	render::canvas = canvas;
 
-	render::text(50.f, 50.f, L"vhs-cheat", { 255, 255, 255, 255 });
+	render::text(50.f, 50.f, _(L"vhs-cheat"), { 255, 255, 255, 255 });
 
 	const auto discord = reinterpret_cast<sdk::u_discord*>(viewport_client);
 	if (!discord) return;
@@ -63,9 +65,9 @@ void __stdcall hooks::post_render::hook(sdk::u_object* viewport_client, sdk::u_c
 		discord->destroy_discord_object();
 
 		discord->create_discord_object(940296659693363221);
-		discord->set_state(L"driving an infernus");
-		discord->set_details(L"pe ruby nephrite");
-		discord->set_image(L"gtasa");
+		discord->set_state(_(L"driving an infernus"));
+		discord->set_details(_(L"pe ruby nephrite"));
+		discord->set_image(_(L"gtasa"));
 	});
 
 	const auto world = *reinterpret_cast<sdk::u_world**>(sdk::world);

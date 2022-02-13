@@ -1,5 +1,4 @@
-#include "actor.h"
-#include "../../sdk.h" // remove after
+#include <pch.h>
 
 struct sdk::vector sdk::a_actor::get_location() {
 	static const auto fn = sdk::object_array->find_object(_("Function Engine.Actor.K2_GetActorLocation"));

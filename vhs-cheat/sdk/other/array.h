@@ -2,6 +2,8 @@
 #include <cstdint>
 
 namespace sdk {
+	struct u_string;
+
 	template<class T>
 	struct u_array {
 		friend struct u_string;

@@ -1,3 +1,4 @@
+#include <pch.h>
 #include "../features.h"
 
 void visuals::survivor::run(const sdk::u_world* world, sdk::a_pawn* my_player, sdk::a_player_controller* player_controller) {
@@ -24,10 +25,6 @@ void visuals::survivor::run(const sdk::u_world* world, sdk::a_pawn* my_player, s
 
 			const auto character = reinterpret_cast<sdk::a_base_char*>(actor->instigator);
 			if (!character) continue;
-
-			if (GetAsyncKeyState(VK_F9) & 1) {
-				character->remove_injury(false, true);
-			}
 
 			const auto head = mesh->get_bone(bones::survivor::head, player_controller);
 			const auto foot = mesh->get_bone(bones::survivor::Root, player_controller);

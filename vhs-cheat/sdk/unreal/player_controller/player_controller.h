@@ -1,11 +1,11 @@
 #pragma once
-#include "../controller/controller.h"
 
 namespace sdk {
 	struct vector_2d;
 	struct vector;
 	struct a_pawn;
 	struct u_player;
+	struct a_controller;
 
 	struct a_player_controller : sdk::a_controller {
 		char pad_0001[0x68]; // 0x230(0x68)

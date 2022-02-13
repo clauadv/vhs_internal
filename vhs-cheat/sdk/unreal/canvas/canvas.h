@@ -1,7 +1,7 @@
 #pragma once
-#include "../object_array/object_array.h"
 
 namespace sdk {
+	struct u_object;
 	struct vector;
 	struct rotator;
 	struct color;

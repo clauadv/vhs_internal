@@ -1,7 +1,5 @@
 #pragma once
-#include "../sdk/sdk.h"
 #include "../render/render.h"
-#include "minhook/minhook.h"
 
 namespace hooks {
 	inline std::once_flag flag;

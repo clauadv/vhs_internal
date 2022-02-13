@@ -1,14 +1,16 @@
 #pragma once
-#include "../object_array/object_array.h"
-#include "../../other/math.h"
-#include "../../other/string.h"
-#include "../scene_component/scene_component.h"
 
 namespace sdk {
-	struct color;
+	struct u_object;
 	struct a_pawn;
+	struct u_scene_component;
+	struct a_actor;
+	struct vector;
+	struct rotator;
+	struct u_string;
+	struct color;
 
-	struct a_actor : u_object {
+	struct a_actor : sdk::u_object {
 		char pad_0001[0xF0]; // 0x28(0xF0)
 		sdk::a_pawn* instigator; // 0x118(0x08)
 		char pad_0002[0x10]; // 0x120(0x10)

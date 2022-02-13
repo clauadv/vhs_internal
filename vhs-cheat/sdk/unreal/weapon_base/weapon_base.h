@@ -1,7 +1,8 @@
 #pragma once
-#include "../actor/actor.h"
 
 namespace sdk {
+	struct a_actor;
+
 	enum EWeaponTypeEnum {
 		wt_none = 0,
 		wt_cross = 1,

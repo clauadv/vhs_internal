@@ -1,3 +1,4 @@
+#include <pch.h>
 #include "../features.h"
 
 void visuals::entities::run(const sdk::u_world* world, sdk::a_pawn* my_player, sdk::a_player_controller* player_controller) {

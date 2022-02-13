@@ -1,5 +1,11 @@
 #pragma once
-#include "../sdk/sdk.h"
+
+namespace sdk {
+	struct u_string;
+	struct color;
+	struct vector_2d;
+	struct u_canvas;
+}
 
 namespace render {
 	inline sdk::u_canvas* canvas;

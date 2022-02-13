@@ -1,5 +1,4 @@
-#include "canvas.h"
-#include "../../sdk.h"
+#include <pch.h>
 
 void sdk::u_canvas::draw_box(const sdk::vector_2d& screen, const sdk::vector_2d& size, const float thickness, const sdk::color& color) {
 	static const auto fn = sdk::object_array->find_object(_("Function Engine.Canvas.K2_DrawBox"));

@@ -1,7 +1,7 @@
 #pragma once
-#include "../object_array/object_array.h"
 
 namespace sdk {
+	struct u_object_array;
 	struct u_string;
 
 	struct u_discord : sdk::u_object_array {

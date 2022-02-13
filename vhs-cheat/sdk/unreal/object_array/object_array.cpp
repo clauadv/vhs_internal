@@ -1,5 +1,4 @@
-#include "object_array.h"
-#include "../../sdk.h"
+#include <pch.h>
 
 std::string sdk::u_object::get_name() const {
 	return name.get_name();

@@ -1,5 +1,4 @@
-#include "skeletal_mesh_component.h"
-#include "../../sdk.h"
+#include <pch.h>
 
 sdk::u_name sdk::u_skeletal_mesh_component::get_bone_name(const int index) {
 	static const auto fn = sdk::object_array->find_object(_("Function Engine.SkinnedMeshComponent.GetBoneName"));

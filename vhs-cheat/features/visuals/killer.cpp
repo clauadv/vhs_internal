@@ -1,3 +1,4 @@
+#include <pch.h>
 #include "../features.h"
 
 void visuals::killer::run(const sdk::u_world* world, sdk::a_pawn* my_player, sdk::a_player_controller* player_controller) {
@@ -20,11 +21,11 @@ void visuals::killer::run(const sdk::u_world* world, sdk::a_pawn* my_player, sdk
 			const auto mesh = pawn->mesh;
 			if (!mesh) continue;
 
-			const auto state = pawn->player_state;
-			if (!state) continue;
-
 			const auto character = reinterpret_cast<sdk::a_base_char*>(actor->instigator);
 			if (!character) continue;
+
+			const auto state = pawn->player_state;
+			if (!character->active_doll_minion && !state) continue;
 
 			const auto bone = bones::get_bone_array(actor);
 			if (bone.empty()) continue;

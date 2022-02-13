@@ -1,7 +1,7 @@
 #pragma once
-#include "../name_pool/name_pool.h"
 
 namespace sdk {
+	struct u_name;
 	struct u_object_array;
 	struct u_class;
 

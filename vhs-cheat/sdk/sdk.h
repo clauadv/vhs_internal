@@ -1,45 +1,9 @@
 #pragma once
-#include <Windows.h>
-#include <iostream>
-#include <string>
-#include <cstdint>
-#include <algorithm>
-#include <iomanip>
-#include <list>
-#include <sstream>
-#include <mutex>
-
-#include "../utils/utils.h"
-
-#include "other/color.h"
-#include "other/math.h"
-#include "other/array.h"
-#include "other/string.h"
-#include "other/view_info.h"
-
-#include "unreal/name_pool/name_pool.h"
-#include "unreal/object_array/object_array.h"
-#include "unreal/world/world.h"
-
-#include "unreal/actor/actor.h"
-#include "unreal/controller/controller.h"
-#include "unreal/player_controller/player_controller.h"
-#include "unreal/pawn/pawn.h"
-#include "unreal/level/level.h"
-#include "unreal/game_instance/game_instance.h"
-#include "unreal/player/player.h"
-#include "unreal/player_state/player_state.h"
-#include "unreal/skeletal_mesh_component/skeletal_mesh_component.h"
-#include "unreal/scene_component/scene_component.h"
-#include "unreal/game_state_base/game_state_base.h"
-#include "unreal/field/field.h"
-#include "unreal/struct/struct.h"
-#include "unreal/class/class.h"
-#include "unreal/canvas/canvas.h"
-#include "unreal/base_char/base_char.h"
-#include "unreal/discord/discord.h"
 
 namespace sdk {
+	struct u_object;
+	struct u_object_array;
+
 	inline std::uintptr_t get_viewpoint;
 	inline std::uintptr_t get_bone_matrix;
 

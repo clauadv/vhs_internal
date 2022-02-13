@@ -1,7 +1,14 @@
 #pragma once
-#include "../sdk/sdk.h"
 #include "../render/render.h"
-#include "../sdk/misc/bones.h"
+
+namespace sdk {
+	struct a_player_controller;
+	struct u_world;
+	struct a_pawn;
+	struct vector_2d;
+	struct a_actor;
+	struct u_skeletal_mesh_component;
+}
 
 namespace visuals::killer {
 	inline std::once_flag flag;

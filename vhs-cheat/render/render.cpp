@@ -1,3 +1,4 @@
+#include <pch.h>
 #include "render.h"
 
 void render::text(const float x, const float y, const sdk::u_string text, const sdk::color color) {

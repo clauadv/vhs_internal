@@ -1,6 +1,4 @@
 #pragma once
-#include <cstdint>
-#include <string>
 
 namespace sdk {
 	struct u_name_entry_handle {

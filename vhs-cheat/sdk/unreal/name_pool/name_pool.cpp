@@ -1,4 +1,4 @@
-#include "name_pool.h"
+#include <pch.h>
 
 std::string sdk::u_name_entry::string() const {
 	if (is_wide) {

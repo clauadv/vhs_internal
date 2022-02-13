@@ -1,6 +1,8 @@
 #pragma once
 
 namespace sdk {
+	template<class T>
+	struct u_array;
 	struct u_player;
 
 	struct u_game_instance {

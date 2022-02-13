@@ -1,5 +1,6 @@
-#include "base_char.h"
-#include "../../sdk.h"
+#include <pch.h>
+
+// sadly these work only on local server
 
 void sdk::a_base_char::set_reveal_time(const float new_value) {
 	/*
