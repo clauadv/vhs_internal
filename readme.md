@@ -1,4 +1,2 @@
-# vhs-cheat
-internal cheat for vhs
-
-![img](https://github.com/clauadv/vhs-cheat/blob/main/img.jpg?raw=true)
+# vhs_internal
+internal cheat for vhs (video horror society)
