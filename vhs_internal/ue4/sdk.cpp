@@ -17,9 +17,6 @@ bool ue4::sdk::initialize() {
 	ue4::sdk::bone_matrix = utils::pattern_scan(main, _("48 8B C4 48 89 58 08 48 89 70 10 57 48 81 EC ? ? ? ? F6"));
 	if (!sdk::bone_matrix) throw std::runtime_error(_("failed to get ue4::sdk::bone_matrix"));
 
-	ue4::sdk::view_point = utils::pattern_scan(main, _("4C 8B DC 53 55 56 57 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 84 24 ? ? ? ? 4D 89 7B D8"));
-	if (!sdk::view_point) throw std::runtime_error(_("failed to get ue4::sdk::view_point"));
-
 	// u_canvas
 	ue4::sdk::font = ue4::core_object::objects->find(_("Font Roboto.Roboto"));
 	ue4::sdk::draw_box = ue4::core_object::objects->find(_("Function Engine.Canvas.K2_DrawBox"));
@@ -39,6 +36,19 @@ bool ue4::sdk::initialize() {
 
 	// u_skeletal_mesh_component
 	ue4::sdk::get_bone_name = ue4::core_object::objects->find(_("Function Engine.SkinnedMeshComponent.GetBoneName"));
+
+	// a_pawn
+	ue4::sdk::get_spectral = ue4::core_object::objects->find(_("Function Game.TPChar.GetTeenSpectralChar"));
+	ue4::sdk::get_equipped_weapon = ue4::core_object::objects->find(_("Function Game.TPChar.GetEquippedWeapon"));
+
+	// a_station_base
+	ue4::sdk::get_crafting_percent = ue4::core_object::objects->find(_("Function Game.StationBase.GetPercentCraftingComplete"));
+	ue4::sdk::get_crafting_weapon_type = ue4::core_object::objects->find(_("Function Game.StationBase.GetLastLocallySelectedWeaponType"));
+
+	// a_minigame_base
+	ue4::sdk::get_current_value = ue4::core_object::objects->find(_("Function Game.BarTimingMinigame.GetCurrentValue"));
+	ue4::sdk::get_target_value = ue4::core_object::objects->find(_("Function Game.BarTimingMinigame.GetTargetValue"));
+	ue4::sdk::submit_value = ue4::core_object::objects->find(_("Function Game.SkillTestMinigameBase.ServerSubmitValue"));
 
 	// killers
 	ue4::sdk::werewolf = ue4::core_object::objects->find(_("BlueprintGeneratedClass Werewolf_BP.Werewolf_BP_C"));
@@ -62,12 +72,6 @@ bool ue4::sdk::initialize() {
 	ue4::sdk::vending_machine = ue4::core_object::objects->find(_("Class Game.SearchableVendingMachine"));
 	ue4::sdk::basket = ue4::core_object::objects->find(_("Class Game.SearchableWasteBasket"));
 	ue4::sdk::station_base = ue4::core_object::objects->find(_("Class Game.StationBase"));
-	ue4::sdk::flamethrower = ue4::core_object::objects->find(_("Class Game.FlamethrowerWeapon"));
-	ue4::sdk::molotov = ue4::core_object::objects->find(_("Class Game.MolotovWeapon"));
-	ue4::sdk::ray_gun = ue4::core_object::objects->find(_("Class Game.RayGunWeapon"));
-	ue4::sdk::cross = ue4::core_object::objects->find(_("Class Game.CrossWeapon"));
-	ue4::sdk::sword = ue4::core_object::objects->find(_("Class Game.DemonSwordWeapon"));
-	ue4::sdk::magic_sphere = ue4::core_object::objects->find(_("Class Game.MagicSphere"));
 	ue4::sdk::life_essence = ue4::core_object::objects->find(_("Class Game.LifeEssencePowerup"));
 	ue4::sdk::medkit = ue4::core_object::objects->find(_("Class Game.MedKitPoint"));
 	ue4::sdk::trap = ue4::core_object::objects->find(_("BlueprintGeneratedClass DollMasterTrap_BP.DollMasterTrap_BP_C"));

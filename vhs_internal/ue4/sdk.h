@@ -26,8 +26,18 @@ namespace ue4::sdk {
 	inline std::uintptr_t bone_matrix;
 	inline ue4::core_object::u_object* get_bone_name;
 
-	// camera
-	inline std::uintptr_t view_point;
+	// a_pawn
+	inline ue4::core_object::u_object* get_spectral;
+	inline ue4::core_object::u_object* get_equipped_weapon;
+
+	// a_station_base
+	inline ue4::core_object::u_object* get_crafting_percent;
+	inline ue4::core_object::u_object* get_crafting_weapon_type;
+
+	// a_minigame_base
+	inline ue4::core_object::u_object* get_current_value;
+	inline ue4::core_object::u_object* get_target_value;
+	inline ue4::core_object::u_object* submit_value;
 
 	// killers
 	inline ue4::core_object::u_object* werewolf;
@@ -51,12 +61,6 @@ namespace ue4::sdk {
 	inline ue4::core_object::u_object* vending_machine;
 	inline ue4::core_object::u_object* basket;
 	inline ue4::core_object::u_object* station_base;
-	inline ue4::core_object::u_object* flamethrower;
-	inline ue4::core_object::u_object* molotov;
-	inline ue4::core_object::u_object* ray_gun;
-	inline ue4::core_object::u_object* cross;
-	inline ue4::core_object::u_object* sword;
-	inline ue4::core_object::u_object* magic_sphere;
 	inline ue4::core_object::u_object* life_essence;
 	inline ue4::core_object::u_object* medkit;
 	inline ue4::core_object::u_object* trap;

@@ -5,10 +5,10 @@ void features::esp::players::draw(const ue4::engine::u_world* world, ue4::game_f
 	for (auto i = 0; i < actors.size(); i++) {
 		const auto actor = actors[i];
 		if (!actor || actor->root_component == nullptr) continue;
-		if (actor == my_player) continue;
 
 		const auto pawn = actor->instigator;
 		if (!pawn) continue;
+		if (pawn == my_player) continue;
 
 		std::call_once(features::esp::players::flag, [] {
 			vhs::bones::initialize();
@@ -21,11 +21,11 @@ void features::esp::players::draw(const ue4::engine::u_world* world, ue4::game_f
 			const auto mesh = pawn->mesh;
 			if (!mesh) continue;
 
-			const auto character = reinterpret_cast<vhs::game::a_base_char*>(actor->instigator);
-			if (!character) continue;
-
 			const auto state = pawn->player_state;
 			if (!state) continue;
+
+			const auto minigame = my_player->minigame;
+			if (!minigame) continue;
 
 			const auto& bone = vhs::bones::get(actor);
 			if (bone.empty()) continue;
@@ -41,14 +41,26 @@ void features::esp::players::draw(const ue4::engine::u_world* world, ue4::game_f
 
 			// draw name
 			{
-				const auto character_name = actor->get_actor_name();
+				const auto character_name = actor->get_actor_name(my_player);
 				const auto distance = my_player->get_distance_to_string(actor);
 
 				std::wstring name;
-				name.append(character_name.first.c_str()).append(L" [").append(distance).append(L"]");
+				name.append(std::get<0>(character_name).c_str()).append(L" [").append(distance).append(L"]");
 
 				const auto text_size = render::text_size(name.c_str());
-				render::text({ head.x + (width / 2.f) - (text_size.x / 2.f), head.y + height + 2.f }, name.c_str(), character_name.second);
+				render::text({ head.x + (width / 2.f) - (text_size.x / 2.f), head.y + height + 2.f }, name.c_str(), std::get<1>(character_name));
+			}
+
+			// draw weapon
+			{
+				const auto weapon = pawn->get_equipped_weapon();
+				if (weapon) {
+					const auto weapon_name = weapon->get_weapon_name();
+					const auto distance = my_player->get_distance_to_string(actor);
+
+					const auto text_size = render::text_size(weapon_name.first.c_str());
+					render::text({ head.x + (width / 2.f) - (text_size.x / 2.f), head.y + height + 19.f }, weapon_name.first.c_str(), weapon_name.second);
+				}
 			}
 
 			// draw skeleton
@@ -61,6 +73,18 @@ void features::esp::players::draw(const ue4::engine::u_world* world, ue4::game_f
 
 					if (player_controller->world_to_screen(first, _first) && player_controller->world_to_screen(second, _second)) {
 						render::line({ _first.x, _first.y }, { _second.x, _second.y }, 1.f, { 255, 255, 255, 255 });
+					}
+				}
+			}
+
+			// auto skillcheck bar
+			{
+				if (!my_player->get_equipped_weapon() && minigame->state == vhs::minigame::skill_test_state::show_minigame) {
+					auto current_value = minigame->get_current_value();
+					auto target_value = minigame->get_target_value();
+
+					if (std::abs(current_value - target_value) < 0.05f) {
+						minigame->submit_value(minigame->get_current_value());
 					}
 				}
 			}
@@ -83,48 +107,28 @@ void features::esp::entities::draw(const ue4::engine::u_world* world, ue4::game_
 			if (!actor || !actor->root_component) continue;
 			if (actor == my_player) continue;
 
-			if (actor->is_a(ue4::sdk::station_base)) {
-
-				const auto location = actor->get_location();
-
-				ue4::math::vector_2d position{};
-				if (player_controller->world_to_screen(location, position)) {
-					const auto character_name = actor->get_actor_name();
-					const auto distance_string = my_player->get_distance_to_string(actor);
-
-					// draw name
-					{
-						std::wstring name;
-						name.append(character_name.first.c_str()).append(L" [").append(distance_string).append(L"]");
-
-						render::text({ position.x, position.y }, name.c_str(), character_name.second);
-					}
-				}
-			}
-
 			if (actor->is_a(ue4::sdk::lockbox) || actor->is_a(ue4::sdk::noisemaker) || actor->is_a(ue4::sdk::pills) ||
 				actor->is_a(ue4::sdk::adrenaline) || actor->is_a(ue4::sdk::walkie) || actor->is_a(ue4::sdk::vending_machine) ||
-				actor->is_a(ue4::sdk::basket) || actor->is_a(ue4::sdk::flamethrower) || actor->is_a(ue4::sdk::molotov) ||
-				actor->is_a(ue4::sdk::ray_gun) || actor->is_a(ue4::sdk::cross) || actor->is_a(ue4::sdk::sword) ||
-				actor->is_a(ue4::sdk::magic_sphere) || actor->is_a(ue4::sdk::life_essence) || actor->is_a(ue4::sdk::medkit) ||
-				actor->is_a(ue4::sdk::trap)) {
+				actor->is_a(ue4::sdk::basket) || actor->is_a(ue4::sdk::station_base) || actor->is_a(ue4::sdk::medkit) ||
+				(actor->is_a(ue4::sdk::life_essence) && my_player->get_spectral()) || actor->is_a(ue4::sdk::trap)) {
+
+				const auto character_name = actor->get_actor_name(my_player);
 
 				const auto distance = my_player->get_distance_to(actor);
-				if (distance * 0.01f >= 30.f || distance * 0.01f == 0.f) continue;
+				if (distance * 0.01f >= std::get<2>(character_name) || distance * 0.01f == 0.f) continue;
 
 				const auto location = actor->get_location();
 
 				ue4::math::vector_2d position{};
 				if (player_controller->world_to_screen(location, position)) {
-					const auto character_name = actor->get_actor_name();
 					const auto distance_string = my_player->get_distance_to_string(actor);
 
 					// draw name
 					{
 						std::wstring name;
-						name.append(character_name.first.c_str()).append(L" [").append(distance_string).append(L"]");
+						name.append(std::get<0>(character_name).c_str()).append(L" [").append(distance_string).append(L"]");
 
-						render::text({ position.x, position.y }, name.c_str(), character_name.second);
+						render::text({ position.x, position.y }, name.c_str(), std::get<1>(character_name));
 					}
 				}
 			}

@@ -14,17 +14,19 @@
     <ClCompile Include="features\esp\esp.cpp" />
     <ClCompile Include="hooks\hooks.cpp" />
     <ClCompile Include="hooks\post_render\post_render.cpp" />
-    <ClCompile Include="hooks\view_point\view_point.cpp" />
     <ClCompile Include="render\render.cpp" />
     <ClCompile Include="ue4\components\skeletal_mesh_component\skeletal_mesh_component.cpp" />
     <ClCompile Include="ue4\core_object\name\name.cpp" />
     <ClCompile Include="ue4\core_object\object\object.cpp" />
     <ClCompile Include="ue4\engine\canvas\canvas.cpp" />
     <ClCompile Include="ue4\game_framework\actor\actor.cpp" />
+    <ClCompile Include="ue4\game_framework\pawn\pawn.cpp" />
     <ClCompile Include="ue4\game_framework\player_controller\player_controller.cpp" />
     <ClCompile Include="ue4\sdk.cpp" />
     <ClCompile Include="vhs\bones\bones.cpp" />
-    <ClCompile Include="vhs\game\game.cpp" />
+    <ClCompile Include="vhs\minigame\minigame.cpp" />
+    <ClCompile Include="vhs\station\station.cpp" />
+    <ClCompile Include="vhs\weapon\weapon.cpp" />
     <ClCompile Include="vhs_internal.cpp" />
     <ClCompile Include="utils\libraries\minhook\src\buffer.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
@@ -95,7 +97,9 @@
     <ClInclude Include="utils\libraries\xor.h" />
     <ClInclude Include="utils\utils.h" />
     <ClInclude Include="vhs\bones\bones.h" />
-    <ClInclude Include="vhs\game\game.h" />
+    <ClInclude Include="vhs\minigame\minigame.h" />
+    <ClInclude Include="vhs\station\station.h" />
+    <ClInclude Include="vhs\weapon\weapon.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

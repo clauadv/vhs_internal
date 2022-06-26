@@ -20,10 +20,6 @@ bool hooks::initialize() {
 		throw std::runtime_error(_("failed to hook post_render"));
 	}
 
-	if (MH_CreateHook(reinterpret_cast<void*>(ue4::sdk::view_point), &hooks::view_point::hook, reinterpret_cast<void**>(&hooks::view_point::original)) != MH_OK) {
-		throw std::runtime_error(_("failed to hook view_point"));
-	}
-
 	if (MH_EnableHook(nullptr) != MH_OK) throw std::runtime_error(_("failed to initialize hooks"));
 
 	return true;

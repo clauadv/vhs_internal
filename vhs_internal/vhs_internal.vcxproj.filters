@@ -18,10 +18,12 @@
     <ClCompile Include="utils\libraries\minhook\src\buffer.c" />
     <ClCompile Include="utils\libraries\minhook\src\hook.c" />
     <ClCompile Include="utils\libraries\minhook\src\trampoline.c" />
-    <ClCompile Include="hooks\view_point\view_point.cpp" />
     <ClCompile Include="features\esp\esp.cpp" />
     <ClCompile Include="vhs\bones\bones.cpp" />
-    <ClCompile Include="vhs\game\game.cpp" />
+    <ClCompile Include="vhs\station\station.cpp" />
+    <ClCompile Include="vhs\weapon\weapon.cpp" />
+    <ClCompile Include="ue4\game_framework\pawn\pawn.cpp" />
+    <ClCompile Include="vhs\minigame\minigame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -73,8 +75,10 @@
     <ClInclude Include="utils\libraries\minhook\src\buffer.h" />
     <ClInclude Include="utils\libraries\minhook\src\trampoline.h" />
     <ClInclude Include="ue4\engine\camera\camera.h" />
-    <ClInclude Include="vhs\game\game.h" />
     <ClInclude Include="features\features.h" />
     <ClInclude Include="vhs\bones\bones.h" />
+    <ClInclude Include="vhs\station\station.h" />
+    <ClInclude Include="vhs\weapon\weapon.h" />
+    <ClInclude Include="vhs\minigame\minigame.h" />
   </ItemGroup>
 </Project>

@@ -71,61 +71,58 @@ std::wstring ue4::game_framework::a_actor::get_distance_to_string(ue4::game_fram
 	return ss.str();
 }
 
-std::pair<ue4::containers::f_string, ue4::math::color> ue4::game_framework::a_actor::get_actor_name() {
+std::tuple<ue4::containers::f_string, ue4::math::color, float> ue4::game_framework::a_actor::get_actor_name(ue4::game_framework::a_pawn* my_player) {
 	if (this->is_a(sdk::werewolf))
-		return { L"werewolf", { 1.f, 0.f, 0.f, 1.f} };
+		return { L"werewolf", { 1.f, 0.f, 0.f, 1.f}, 0.f };
 	if (this->is_a(sdk::toad))
-		return { L"wart", { 1.f, 0.f, 0.f, 1.f} };
+		return { L"wart", { 1.f, 0.f, 0.f, 1.f}, 0.f };
 	if (this->is_a(sdk::doll_master))
-		return { L"doll_master", { 1.f, 0.f, 0.f, 1.f} };
+		return { L"doll_master", { 1.f, 0.f, 0.f, 1.f}, 0.f };
 	if (this->is_a(sdk::doll_minion))
-		return { L"doll_minion", { 1.f, 0.f, 0.f, 1.f} };
+		return { L"doll_minion", { 1.f, 0.f, 0.f, 1.f}, 0.f };
 
 	if (this->is_a(sdk::cheerleader))
-		return { L"gloria", { 1.f, 1.f, 1.f, 1.f} };
+		return { L"gloria", { 1.f, 1.f, 1.f, 1.f}, 0.f };
 	if (this->is_a(sdk::jock))
-		return { L"brett", { 1.f, 1.f, 1.f, 1.f} };
+		return { L"brett", { 1.f, 1.f, 1.f, 1.f}, 0.f };
 	if (this->is_a(sdk::outsider))
-		return { L"jess", { 1.f, 1.f, 1.f, 1.f} };
+		return { L"jess", { 1.f, 1.f, 1.f, 1.f}, 0.f };
 	if (this->is_a(sdk::punk))
-		return { L"leo", { 1.f, 1.f, 1.f, 1.f} };
+		return { L"leo", { 1.f, 1.f, 1.f, 1.f}, 0.f };
 	if (this->is_a(sdk::virgin))
-		return { L"faith", { 1.f, 1.f, 1.f, 1.f} };
+		return { L"faith", { 1.f, 1.f, 1.f, 1.f}, 0.f };
 
 	if (this->is_a(sdk::lockbox))
-		return { L"lockbox", { 0.20f, 0.52f, 0.92f, 1.f } };
+		return { L"lockbox", { 0.20f, 0.52f, 0.92f, 1.f }, 50.f };
 	if (this->is_a(sdk::noisemaker))
-		return { L"noise_maker", { 0.20f, 0.52f, 0.92f, 1.f} };
+		return { L"noise_maker", { 0.20f, 0.52f, 0.92f, 1.f}, 30.f };
 	if (this->is_a(sdk::pills))
-		return { L"candy_bar", { 0.20f, 0.52f, 0.92f, 1.f} };
+		return { L"candy_bar", { 0.20f, 0.52f, 0.92f, 1.f}, 30.f };
 	if (this->is_a(sdk::adrenaline))
-		return { L"pop_can", { 0.20f, 0.52f, 0.92f, 1.f} };
+		return { L"pop_can", { 0.20f, 0.52f, 0.92f, 1.f}, 30.f };
 	if (this->is_a(sdk::walkie))
-		return { L"walkie_talkie", { 0.20f, 0.52f, 0.92f, 1.f} };
+		return { L"walkie_talkie", { 0.20f, 0.52f, 0.92f, 1.f}, 30.f };
 	if (this->is_a(sdk::vending_machine))
-		return { L"vending_machine", { 0.71f, 0.27f, 0.92f, 1.f} };
+		return { L"vending_machine", { 0.71f, 0.27f, 0.92f, 1.f}, 30.f };
 	if (this->is_a(sdk::basket))
-		return { L"trashbox", { 0.20f, 0.52f, 0.92f, 1.f} };
-	if (this->is_a(sdk::station_base))
-		return { L"station_base", { 0.71f, 0.27f, 0.92f, 1.f} };
-	if (this->is_a(sdk::flamethrower))
-		return { L"flamethrower", { 0.20f, 0.52f, 0.92f, 1.f} };
-	if (this->is_a(sdk::molotov))
-		return { L"molotov", { 0.20f, 0.52f, 0.92f, 1.f} };
-	if (this->is_a(sdk::ray_gun))
-		return { L"ray_gun", { 0.20f, 0.52f, 0.92f, 1.f} };
-	if (this->is_a(sdk::cross))
-		return { L"cross", { 0.20f, 0.52f, 0.92f, 1.f} };
-	if (this->is_a(sdk::sword))
-		return { L"sword", { 0.20f, 0.52f, 0.92f, 1.f} };
-	if (this->is_a(sdk::magic_sphere))
-		return { L"eyeball", { 0.20f, 0.52f, 0.92f, 1.f} };
+		return { L"trashbox", { 0.20f, 0.52f, 0.92f, 1.f}, 30.f };
 	if (this->is_a(sdk::life_essence))
-		return { L"luma", { 0.20f, 0.52f, 0.92f, 1.f} };
+		return { L"luma", { 0.20f, 0.52f, 0.92f, 1.f}, 30.f };
 	if (this->is_a(sdk::medkit))
-		return { L"healing_station", { 0.71f, 0.27f, 0.92f, 1.f} };
+		return { L"healing_station", { 0.71f, 0.27f, 0.92f, 1.f}, 30.f };
 	if (this->is_a(sdk::trap))
-		return { L"trap", { 1.f, 0.f, 0.f, 1.f} };
+		return { L"trap", { 1.f, 0.f, 0.f, 1.f}, 30.f };
 
-	return { L"", { 0.f, 0.f, 0.f, 0.f } };
+	if (this->is_a(sdk::station_base)) {
+		const auto station_name = reinterpret_cast<vhs::station::a_station_base*>(this)->get_station_name();
+		const auto percent = reinterpret_cast<vhs::station::a_station_base*>(this)->get_crafting_percent(my_player->player_state, my_player, reinterpret_cast<vhs::station::a_station_base*>(this)->get_station_weapon_type());
+		const auto distance = my_player->get_distance_to_string(this);
+
+		std::wstring name;
+		name.append(station_name.first.c_str()).append(L" [").append(percent).append(L"%]");
+
+		return { name.c_str(), station_name.second, 100.f };
+	}
+
+	return { L"none", { 0.f, 0.f, 0.f, 1.f }, 0.f };
 }

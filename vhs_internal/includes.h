@@ -50,8 +50,10 @@
 #include "ue4/components/scene_component/scene_component.h"
 #include "ue4/components/skeletal_mesh_component/skeletal_mesh_component.h"
 
-#include "vhs/game/game.h"
 #include "vhs/bones/bones.h"
+#include "vhs/weapon/weapon.h"
+#include "vhs/station/station.h"
+#include "vhs/minigame/minigame.h"
 #include "features/features.h"
 
 #include "render/render.h"
