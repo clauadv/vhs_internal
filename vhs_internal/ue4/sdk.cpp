@@ -36,6 +36,7 @@ bool ue4::sdk::initialize() {
 
 	// u_skeletal_mesh_component
 	ue4::sdk::get_bone_name = ue4::core_object::objects->find(_("Function Engine.SkinnedMeshComponent.GetBoneName"));
+	ue4::sdk::get_bones_num = ue4::core_object::objects->find(_("Function Engine.SkinnedMeshComponent.GetNumBones"));
 
 	// a_pawn
 	ue4::sdk::get_spectral = ue4::core_object::objects->find(_("Function Game.TPChar.GetTeenSpectralChar"));
@@ -52,7 +53,7 @@ bool ue4::sdk::initialize() {
 
 	// killers
 	ue4::sdk::werewolf = ue4::core_object::objects->find(_("BlueprintGeneratedClass Werewolf_BP.Werewolf_BP_C"));
-	ue4::sdk::toad = ue4::core_object::objects->find(_("BlueprintGeneratedClass Toad_BP.Toad_BP_C"));
+	ue4::sdk::wart = ue4::core_object::objects->find(_("BlueprintGeneratedClass Toad_BP.Toad_BP_C"));
 	ue4::sdk::doll_master = ue4::core_object::objects->find(_("BlueprintGeneratedClass DollMaster_BP.DollMaster_BP_C"));
 	ue4::sdk::doll_minion = ue4::core_object::objects->find(_("BlueprintGeneratedClass DollMinion_BP.DollMinion_BP_C"));
 
@@ -75,8 +76,6 @@ bool ue4::sdk::initialize() {
 	ue4::sdk::life_essence = ue4::core_object::objects->find(_("Class Game.LifeEssencePowerup"));
 	ue4::sdk::medkit = ue4::core_object::objects->find(_("Class Game.MedKitPoint"));
 	ue4::sdk::trap = ue4::core_object::objects->find(_("BlueprintGeneratedClass DollMasterTrap_BP.DollMasterTrap_BP_C"));
-
-	hooks::initialize();
 
 	return true;
 }

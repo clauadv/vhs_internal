@@ -23,6 +23,8 @@ namespace ue4::game_framework {
 		ue4::components::u_skeletal_mesh_component* mesh; // 0x280(0x08)
 		char pad_0003[0x810]; // 0x288(0x810)
 		vhs::minigame::a_minigame_base* minigame; // 0xa98(0x08)
+		char pad_0004[0x6a0]; // 0xaa0(0x6a0)
+		bool force_thirdperson; // 0x1140(0x01)
 
 		void* get_spectral();
 		vhs::weapon::a_weapon_base* get_equipped_weapon();

@@ -12,11 +12,13 @@
 #include <utility>
 #include <cstdint>
 #include <future>
+#include <corecrt_math_defines.h>
 
 #include "utils/utils.h"
 #include "utils/libraries/minhook/include/MinHook.h"
 #include "utils/libraries/xor.h"
 #include "utils/libraries/lazy_importer.h"
+#include "utils/libraries/fnv.h"
 
 #include "ue4/sdk.h"
 

@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="features\esp\esp.cpp" />
+    <ClCompile Include="features\features.cpp" />
     <ClCompile Include="hooks\hooks.cpp" />
     <ClCompile Include="hooks\post_render\post_render.cpp" />
     <ClCompile Include="render\render.cpp" />
@@ -27,7 +28,7 @@
     <ClCompile Include="vhs\minigame\minigame.cpp" />
     <ClCompile Include="vhs\station\station.cpp" />
     <ClCompile Include="vhs\weapon\weapon.cpp" />
-    <ClCompile Include="vhs_internal.cpp" />
+    <ClCompile Include="vhs.cpp" />
     <ClCompile Include="utils\libraries\minhook\src\buffer.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
@@ -78,6 +79,7 @@
     <ClInclude Include="ue4\math\vector.h" />
     <ClInclude Include="ue4\math\vector_2d.h" />
     <ClInclude Include="ue4\sdk.h" />
+    <ClInclude Include="utils\libraries\fnv.h" />
     <ClInclude Include="utils\libraries\lazy_importer.h" />
     <ClInclude Include="utils\libraries\minhook\include\MinHook.h" />
     <ClInclude Include="utils\libraries\minhook\src\buffer.h" />
@@ -141,8 +143,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)bin\</OutDir>
-    <IntDir>$(SolutionDir)intermediates\</IntDir>
-    <IncludePath>$(SolutionDir)$(ProjectName)\;$(IncludePath)</IncludePath>
+    <IntDir>$(SolutionDir)bin\intermediates\</IntDir>
+    <IncludePath>$(SolutionDir)$(ProjectName)\;$(IncludePath);</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

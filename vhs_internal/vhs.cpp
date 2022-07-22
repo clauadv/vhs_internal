@@ -5,6 +5,7 @@ void initialize(const HMODULE module) {
 	try {
 		utils::console::initialize(_("vhs_internal"));
 		ue4::sdk::initialize();
+		hooks::initialize();
 	}
 
 	catch (const std::runtime_error& error) {
@@ -12,8 +13,9 @@ void initialize(const HMODULE module) {
 		LI_FN(FreeLibraryAndExitThread)(module, 0);
 	}
 
-	while (!LI_FN(GetAsyncKeyState)(VK_END))
+	while (!LI_FN(GetAsyncKeyState)(VK_END)) {
 		std::this_thread::sleep_for(std::chrono::milliseconds(50));
+	}
 
 	LI_FN(FreeLibraryAndExitThread)(module, 0);
 }
@@ -23,8 +25,9 @@ bool DllMain(const HMODULE module, const std::uint32_t call_reason, void* reserv
 
 	switch (call_reason) {
 		case DLL_PROCESS_ATTACH:
-			if (const auto handle = LI_FN(CreateThread)(nullptr, NULL, reinterpret_cast<unsigned long(__stdcall*)(void*)>(initialize), module, NULL, nullptr))
+			if (const auto handle = LI_FN(CreateThread)(nullptr, NULL, reinterpret_cast<unsigned long(__stdcall*)(void*)>(initialize), module, NULL, nullptr)) {
 				LI_FN(CloseHandle)(handle);
+			}
 			break;
 		case DLL_PROCESS_DETACH:
 			hooks::release();

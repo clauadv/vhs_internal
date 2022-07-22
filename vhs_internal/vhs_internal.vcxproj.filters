@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="vhs_internal.cpp" />
+    <ClCompile Include="vhs.cpp" />
     <ClCompile Include="utils\utils.cpp" />
     <ClCompile Include="ue4\core_object\object\object.cpp" />
     <ClCompile Include="ue4\sdk.cpp" />
@@ -11,7 +11,6 @@
     <ClCompile Include="ue4\game_framework\actor\actor.cpp" />
     <ClCompile Include="ue4\components\skeletal_mesh_component\skeletal_mesh_component.cpp" />
     <ClCompile Include="hooks\post_render\post_render.cpp" />
-    <ClCompile Include="ue4\game_framework\player_controller\player_controller.cpp" />
     <ClCompile Include="render\render.cpp" />
     <ClCompile Include="utils\libraries\minhook\src\hde\hde32.c" />
     <ClCompile Include="utils\libraries\minhook\src\hde\hde64.c" />
@@ -24,6 +23,8 @@
     <ClCompile Include="vhs\weapon\weapon.cpp" />
     <ClCompile Include="ue4\game_framework\pawn\pawn.cpp" />
     <ClCompile Include="vhs\minigame\minigame.cpp" />
+    <ClCompile Include="features\features.cpp" />
+    <ClCompile Include="ue4\game_framework\player_controller\player_controller.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -75,10 +76,11 @@
     <ClInclude Include="utils\libraries\minhook\src\buffer.h" />
     <ClInclude Include="utils\libraries\minhook\src\trampoline.h" />
     <ClInclude Include="ue4\engine\camera\camera.h" />
-    <ClInclude Include="features\features.h" />
     <ClInclude Include="vhs\bones\bones.h" />
     <ClInclude Include="vhs\station\station.h" />
     <ClInclude Include="vhs\weapon\weapon.h" />
     <ClInclude Include="vhs\minigame\minigame.h" />
+    <ClInclude Include="features\features.h" />
+    <ClInclude Include="utils\libraries\fnv.h" />
   </ItemGroup>
 </Project>

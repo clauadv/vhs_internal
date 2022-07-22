@@ -25,6 +25,7 @@ namespace ue4::sdk {
 	// u_skeletal_mesh_component
 	inline std::uintptr_t bone_matrix;
 	inline ue4::core_object::u_object* get_bone_name;
+	inline ue4::core_object::u_object* get_bones_num;
 
 	// a_pawn
 	inline ue4::core_object::u_object* get_spectral;
@@ -41,7 +42,7 @@ namespace ue4::sdk {
 
 	// killers
 	inline ue4::core_object::u_object* werewolf;
-	inline ue4::core_object::u_object* toad;
+	inline ue4::core_object::u_object* wart;
 	inline ue4::core_object::u_object* doll_master;
 	inline ue4::core_object::u_object* doll_minion;
 

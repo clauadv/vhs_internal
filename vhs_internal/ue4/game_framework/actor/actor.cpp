@@ -71,10 +71,10 @@ std::wstring ue4::game_framework::a_actor::get_distance_to_string(ue4::game_fram
 	return ss.str();
 }
 
-std::tuple<ue4::containers::f_string, ue4::math::color, float> ue4::game_framework::a_actor::get_actor_name(ue4::game_framework::a_pawn* my_player) {
+std::tuple<ue4::containers::f_string, ue4::math::color, float> ue4::game_framework::a_actor::get_actor_info(ue4::game_framework::a_pawn* my_player) {
 	if (this->is_a(sdk::werewolf))
 		return { L"werewolf", { 1.f, 0.f, 0.f, 1.f}, 0.f };
-	if (this->is_a(sdk::toad))
+	if (this->is_a(sdk::wart))
 		return { L"wart", { 1.f, 0.f, 0.f, 1.f}, 0.f };
 	if (this->is_a(sdk::doll_master))
 		return { L"doll_master", { 1.f, 0.f, 0.f, 1.f}, 0.f };
@@ -125,4 +125,24 @@ std::tuple<ue4::containers::f_string, ue4::math::color, float> ue4::game_framewo
 	}
 
 	return { L"none", { 0.f, 0.f, 0.f, 1.f }, 0.f };
+}
+
+bool ue4::game_framework::a_actor::is_teen() {
+	if (this->is_a(ue4::sdk::cheerleader) || this->is_a(ue4::sdk::jock) || this->is_a(ue4::sdk::outsider) ||
+		this->is_a(ue4::sdk::punk) || this->is_a(ue4::sdk::virgin)) {
+
+		return true;
+	}
+
+	return false;
+}
+
+bool ue4::game_framework::a_actor::is_monster() {
+	if (this->is_a(ue4::sdk::werewolf) || this->is_a(ue4::sdk::wart) ||
+		this->is_a(ue4::sdk::doll_master) || this->is_a(ue4::sdk::doll_minion)) {
+
+		return true;
+	}
+
+	return false;
 }
