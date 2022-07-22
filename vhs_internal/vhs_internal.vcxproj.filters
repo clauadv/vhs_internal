@@ -25,6 +25,7 @@
     <ClCompile Include="vhs\minigame\minigame.cpp" />
     <ClCompile Include="features\features.cpp" />
     <ClCompile Include="ue4\game_framework\player_controller\player_controller.cpp" />
+    <ClCompile Include="features\misc\misc.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />

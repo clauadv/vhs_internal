@@ -50,7 +50,6 @@ std::vector<std::pair<int, int>> vhs::bones::get_array(ue4::components::u_skelet
 
 	bone.emplace_back(std::make_pair(head, neck));
 	bone.emplace_back(std::make_pair(neck, pelvis));
-
 	
 	// right upper body
 	{
@@ -126,7 +125,6 @@ std::vector<std::pair<int, int>> vhs::bones::get_array(ue4::components::u_skelet
 		bone.emplace_back(std::make_pair(ankle_r, foot_r));
 	}
 
-	
 	// left upper body
 	{
 		auto shoulder_l = 0;

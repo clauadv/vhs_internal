@@ -8,7 +8,11 @@ void features::run(const ue4::engine::u_world* world, ue4::game_framework::a_paw
 
 		const auto pawn = player->pawn_private;
 		if (!pawn) continue;
-		if (pawn == my_player) continue;
+		if (pawn == my_player) {
+			features::misc::auto_skillcheck::run(my_player);
+
+			continue;
+		}
 
 		const auto mesh = pawn->mesh;
 		if (!mesh) continue;
@@ -30,7 +34,7 @@ void features::run(const ue4::engine::u_world* world, ue4::game_framework::a_paw
 			if (!actor || actor->root_component == nullptr) continue;
 			if (actor == my_player) continue;
 
-			// features::esp::entities::draw(actor, my_player, player_controller);
+			features::esp::entities::draw(actor, my_player, player_controller);
 		}
 	}
 }

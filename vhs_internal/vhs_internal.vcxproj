@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="features\esp\esp.cpp" />
     <ClCompile Include="features\features.cpp" />
+    <ClCompile Include="features\misc\misc.cpp" />
     <ClCompile Include="hooks\hooks.cpp" />
     <ClCompile Include="hooks\post_render\post_render.cpp" />
     <ClCompile Include="render\render.cpp" />

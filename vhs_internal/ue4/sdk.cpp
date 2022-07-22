@@ -15,7 +15,7 @@ bool ue4::sdk::initialize() {
 	if (!ue4::engine::world) throw std::runtime_error(_("failed to get ue4::engine::world"));
 
 	ue4::sdk::bone_matrix = utils::pattern_scan(main, _("48 8B C4 48 89 58 08 48 89 70 10 57 48 81 EC ? ? ? ? F6"));
-	if (!sdk::bone_matrix) throw std::runtime_error(_("failed to get ue4::sdk::bone_matrix"));
+	if (!ue4::sdk::bone_matrix) throw std::runtime_error(_("failed to get ue4::sdk::bone_matrix"));
 
 	// u_canvas
 	ue4::sdk::font = ue4::core_object::objects->find(_("Font Roboto.Roboto"));
