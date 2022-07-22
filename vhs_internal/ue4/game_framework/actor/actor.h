@@ -23,6 +23,8 @@ namespace ue4::game_framework {
 		void get_bounds(bool only_colliding_components, ue4::math::vector* origin, ue4::math::vector* extent);
 		float get_distance_to(ue4::game_framework::a_actor* actor);
 		std::wstring get_distance_to_string(ue4::game_framework::a_actor* actor);
+		void enable_input(ue4::game_framework::a_player_controller* player_controller);
+		void disable_input(ue4::game_framework::a_player_controller* player_controller);
 		std::tuple<ue4::containers::f_string, ue4::math::color, float> get_actor_info(ue4::game_framework::a_pawn* my_player);
 		bool is_teen();
 		bool is_monster();

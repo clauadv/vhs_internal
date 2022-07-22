@@ -16,6 +16,7 @@ void __stdcall hooks::post_render::hook(ue4::core_object::u_object* viewport_cli
 	const auto my_player = player_controller->acknowledged_pawn;
 	if (!my_player) return;
 
+	menu::handle_input(my_player, player_controller);
 	features::run(world, my_player, player_controller);
 
 	hooks::post_render::original(viewport_client, canvas);

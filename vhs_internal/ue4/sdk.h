@@ -5,6 +5,10 @@ namespace ue4::core_object {
 }
 
 namespace ue4::sdk {
+
+	// view_point
+	inline std::uintptr_t view_point;
+
 	// u_canvas
 	inline ue4::core_object::u_object* font;
 	inline ue4::core_object::u_object* draw_box;
@@ -21,6 +25,8 @@ namespace ue4::sdk {
 	inline ue4::core_object::u_object* get_actor_rotation;
 	inline ue4::core_object::u_object* get_actor_bounds;
 	inline ue4::core_object::u_object* get_distance_to;
+	inline ue4::core_object::u_object* enable_input;
+	inline ue4::core_object::u_object* disable_input;
 
 	// u_skeletal_mesh_component
 	inline std::uintptr_t bone_matrix;
@@ -59,7 +65,7 @@ namespace ue4::sdk {
 	inline ue4::core_object::u_object* pills;
 	inline ue4::core_object::u_object* adrenaline;
 	inline ue4::core_object::u_object* walkie;
-	inline ue4::core_object::u_object* vending_machine;
+	inline ue4::core_object::u_object* vending;
 	inline ue4::core_object::u_object* basket;
 	inline ue4::core_object::u_object* station_base;
 	inline ue4::core_object::u_object* life_essence;

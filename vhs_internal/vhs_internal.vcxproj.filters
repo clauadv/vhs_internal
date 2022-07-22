@@ -26,6 +26,16 @@
     <ClCompile Include="features\features.cpp" />
     <ClCompile Include="ue4\game_framework\player_controller\player_controller.cpp" />
     <ClCompile Include="features\misc\misc.cpp" />
+    <ClCompile Include="menu\d3d11\d3d11.cpp" />
+    <ClCompile Include="menu\menu.cpp" />
+    <ClCompile Include="hooks\present\present.cpp" />
+    <ClCompile Include="hooks\wndproc\wndproc.cpp" />
+    <ClCompile Include="utils\libraries\imgui\imgui.cpp" />
+    <ClCompile Include="utils\libraries\imgui\imgui_draw.cpp" />
+    <ClCompile Include="utils\libraries\imgui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="utils\libraries\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="utils\libraries\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="hooks\view_point\view_point.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -83,5 +93,17 @@
     <ClInclude Include="vhs\minigame\minigame.h" />
     <ClInclude Include="features\features.h" />
     <ClInclude Include="utils\libraries\fnv.h" />
+    <ClInclude Include="menu\d3d11\d3d11.h" />
+    <ClInclude Include="menu\menu.h" />
+    <ClInclude Include="menu\variables.h" />
+    <ClInclude Include="utils\libraries\imgui\imconfig.h" />
+    <ClInclude Include="utils\libraries\imgui\imgui.h" />
+    <ClInclude Include="utils\libraries\imgui\imgui_impl_dx11.h" />
+    <ClInclude Include="utils\libraries\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="utils\libraries\imgui\imgui_internal.h" />
+    <ClInclude Include="utils\libraries\imgui\imstb_rectpack.h" />
+    <ClInclude Include="utils\libraries\imgui\imstb_textedit.h" />
+    <ClInclude Include="utils\libraries\imgui\imstb_truetype.h" />
+    <ClInclude Include="utils\libraries\imgui\shaders.h" />
   </ItemGroup>
 </Project>

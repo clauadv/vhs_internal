@@ -13,12 +13,18 @@
 #include <cstdint>
 #include <future>
 #include <corecrt_math_defines.h>
+#include <d3d11.h>
 
 #include "utils/utils.h"
 #include "utils/libraries/minhook/include/MinHook.h"
 #include "utils/libraries/xor.h"
 #include "utils/libraries/lazy_importer.h"
 #include "utils/libraries/fnv.h"
+
+#include "utils/libraries/imgui/imgui.h"
+#include "utils/libraries/imgui/imgui_impl_dx11.h"
+#include "utils/libraries/imgui/imgui_impl_win32.h"
+#include "utils/libraries/imgui/imgui_internal.h"
 
 #include "ue4/sdk.h"
 
@@ -57,5 +63,8 @@
 #include "vhs/station/station.h"
 #include "vhs/minigame/minigame.h"
 #include "features/features.h"
+
+#include "menu/d3d11/d3d11.h"
+#include "menu/menu.h"
 
 #include "render/render.h"

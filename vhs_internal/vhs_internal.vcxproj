@@ -16,6 +16,11 @@
     <ClCompile Include="features\misc\misc.cpp" />
     <ClCompile Include="hooks\hooks.cpp" />
     <ClCompile Include="hooks\post_render\post_render.cpp" />
+    <ClCompile Include="hooks\present\present.cpp" />
+    <ClCompile Include="hooks\view_point\view_point.cpp" />
+    <ClCompile Include="hooks\wndproc\wndproc.cpp" />
+    <ClCompile Include="menu\d3d11\d3d11.cpp" />
+    <ClCompile Include="menu\menu.cpp" />
     <ClCompile Include="render\render.cpp" />
     <ClCompile Include="ue4\components\skeletal_mesh_component\skeletal_mesh_component.cpp" />
     <ClCompile Include="ue4\core_object\name\name.cpp" />
@@ -25,6 +30,21 @@
     <ClCompile Include="ue4\game_framework\pawn\pawn.cpp" />
     <ClCompile Include="ue4\game_framework\player_controller\player_controller.cpp" />
     <ClCompile Include="ue4\sdk.cpp" />
+    <ClCompile Include="utils\libraries\imgui\imgui.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="utils\libraries\imgui\imgui_draw.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="utils\libraries\imgui\imgui_impl_dx11.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="utils\libraries\imgui\imgui_impl_win32.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="utils\libraries\imgui\imgui_widgets.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="vhs\bones\bones.cpp" />
     <ClCompile Include="vhs\minigame\minigame.cpp" />
     <ClCompile Include="vhs\station\station.cpp" />
@@ -51,6 +71,9 @@
     <ClInclude Include="features\features.h" />
     <ClInclude Include="hooks\hooks.h" />
     <ClInclude Include="includes.h" />
+    <ClInclude Include="menu\d3d11\d3d11.h" />
+    <ClInclude Include="menu\menu.h" />
+    <ClInclude Include="menu\variables.h" />
     <ClInclude Include="render\render.h" />
     <ClInclude Include="ue4\components\scene_component\scene_component.h" />
     <ClInclude Include="ue4\components\skeletal_mesh_component\skeletal_mesh_component.h" />
@@ -81,6 +104,15 @@
     <ClInclude Include="ue4\math\vector_2d.h" />
     <ClInclude Include="ue4\sdk.h" />
     <ClInclude Include="utils\libraries\fnv.h" />
+    <ClInclude Include="utils\libraries\imgui\imconfig.h" />
+    <ClInclude Include="utils\libraries\imgui\imgui.h" />
+    <ClInclude Include="utils\libraries\imgui\imgui_impl_dx11.h" />
+    <ClInclude Include="utils\libraries\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="utils\libraries\imgui\imgui_internal.h" />
+    <ClInclude Include="utils\libraries\imgui\imstb_rectpack.h" />
+    <ClInclude Include="utils\libraries\imgui\imstb_textedit.h" />
+    <ClInclude Include="utils\libraries\imgui\imstb_truetype.h" />
+    <ClInclude Include="utils\libraries\imgui\shaders.h" />
     <ClInclude Include="utils\libraries\lazy_importer.h" />
     <ClInclude Include="utils\libraries\minhook\include\MinHook.h" />
     <ClInclude Include="utils\libraries\minhook\src\buffer.h" />

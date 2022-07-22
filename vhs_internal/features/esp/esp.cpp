@@ -6,6 +6,8 @@ void features::esp::players::draw(ue4::game_framework::a_pawn* pawn, ue4::game_f
 
 	// draw name
 	{
+		if (!variables::players::name) return;
+
 		const auto actor_info = pawn->get_actor_info(my_player);
 		const auto distance = my_player->get_distance_to_string(pawn);
 
@@ -16,19 +18,10 @@ void features::esp::players::draw(ue4::game_framework::a_pawn* pawn, ue4::game_f
 		render::text({ root.x, root.y + 2.f }, text.c_str(), std::get<1>(actor_info));
 	}
 
-	// draw weapon
-	{
-		const auto weapon = pawn->get_equipped_weapon();
-		if (weapon) {
-			const auto weapon_name = weapon->get_weapon_name();
-			const auto distance = my_player->get_distance_to_string(pawn);
-
-			render::text({ root.x, root.y + 20.f }, weapon_name.first.c_str(), weapon_name.second);
-		}
-	}
-
 	// draw skeleton
 	{
+		if (!variables::players::skeleton) return;
+
 		for (const auto& bone : vhs::bones::get_array(mesh, pawn)) {
 			ue4::math::vector_2d first_bone{}, second_bone{};
 
@@ -41,9 +34,17 @@ void features::esp::players::draw(ue4::game_framework::a_pawn* pawn, ue4::game_f
 		}
 	}
 
-	// draw snap lines
+	// draw weapon
 	{
-		// render::line(root, { render::screen.x / 2.f, render::screen.y }, 1.f, color);
+		if (!variables::players::weapon) return;
+
+		const auto weapon = pawn->get_equipped_weapon();
+		if (weapon) {
+			const auto weapon_name = weapon->get_weapon_name();
+			const auto distance = my_player->get_distance_to_string(pawn);
+
+			render::text({ root.x, root.y + 20.f }, weapon_name.first.c_str(), weapon_name.second);
+		}
 	}
 }
 
@@ -51,7 +52,7 @@ void features::esp::entities::draw(ue4::game_framework::a_actor* actor, ue4::gam
 	const std::vector<ue4::core_object::u_object*> actors = {
 		ue4::sdk::lockbox, ue4::sdk::noisemaker,
 		ue4::sdk::pills, ue4::sdk::adrenaline,
-		ue4::sdk::walkie, ue4::sdk::vending_machine,
+		ue4::sdk::walkie, ue4::sdk::vending,
 		ue4::sdk::basket, ue4::sdk::station_base,
 		ue4::sdk::medkit, ue4::sdk::life_essence,
 		ue4::sdk::trap

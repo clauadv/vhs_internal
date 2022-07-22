@@ -1,6 +1,8 @@
 #include <includes.h>
 
 void features::misc::auto_skillcheck::run(ue4::game_framework::a_pawn* my_player) {
+	if (!variables::misc::auto_skillcheck) return;
+
 	const auto minigame = my_player->minigame;
 	if (!minigame) return;
 

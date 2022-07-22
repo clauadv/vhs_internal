@@ -17,6 +17,9 @@ bool ue4::sdk::initialize() {
 	ue4::sdk::bone_matrix = utils::pattern_scan(main, _("48 8B C4 48 89 58 08 48 89 70 10 57 48 81 EC ? ? ? ? F6"));
 	if (!ue4::sdk::bone_matrix) throw std::runtime_error(_("failed to get ue4::sdk::bone_matrix"));
 
+	ue4::sdk::view_point = utils::pattern_scan(main, _("4C 8B DC 53 55 56 57 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 84 24 ? ? ? ? 4D 89"));
+	if (!ue4::sdk::view_point) throw std::runtime_error(_("failed to get ue4::sdk::view_point"));
+
 	// u_canvas
 	ue4::sdk::font = ue4::core_object::objects->find(_("Font Roboto.Roboto"));
 	ue4::sdk::draw_box = ue4::core_object::objects->find(_("Function Engine.Canvas.K2_DrawBox"));
@@ -33,6 +36,8 @@ bool ue4::sdk::initialize() {
 	ue4::sdk::get_actor_rotation = ue4::core_object::objects->find(_("Function Engine.Actor.K2_GetActorRotation"));
 	ue4::sdk::get_actor_bounds = ue4::core_object::objects->find(_("Function Engine.Actor.GetActorBounds"));
 	ue4::sdk::get_distance_to = ue4::core_object::objects->find(_("Function Engine.Actor.GetDistanceTo"));
+	ue4::sdk::enable_input = ue4::core_object::objects->find(_("Function Engine.Actor.EnableInput"));
+	ue4::sdk::disable_input = ue4::core_object::objects->find(_("Function Engine.Actor.DisableInput"));
 
 	// u_skeletal_mesh_component
 	ue4::sdk::get_bone_name = ue4::core_object::objects->find(_("Function Engine.SkinnedMeshComponent.GetBoneName"));
@@ -70,7 +75,7 @@ bool ue4::sdk::initialize() {
 	ue4::sdk::pills = ue4::core_object::objects->find(_("Class Game.PillsPickup"));
 	ue4::sdk::adrenaline = ue4::core_object::objects->find(_("BlueprintGeneratedClass AdrenalinePickup_BP.AdrenalinePickup_BP_C"));
 	ue4::sdk::walkie = ue4::core_object::objects->find(_("BlueprintGeneratedClass WalkiePickup_BP.WalkiePickup_BP_C"));
-	ue4::sdk::vending_machine = ue4::core_object::objects->find(_("Class Game.SearchableVendingMachine"));
+	ue4::sdk::vending = ue4::core_object::objects->find(_("Class Game.SearchableVendingMachine"));
 	ue4::sdk::basket = ue4::core_object::objects->find(_("Class Game.SearchableWasteBasket"));
 	ue4::sdk::station_base = ue4::core_object::objects->find(_("Class Game.StationBase"));
 	ue4::sdk::life_essence = ue4::core_object::objects->find(_("Class Game.LifeEssencePowerup"));

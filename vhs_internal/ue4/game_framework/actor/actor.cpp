@@ -71,61 +71,198 @@ std::wstring ue4::game_framework::a_actor::get_distance_to_string(ue4::game_fram
 	return ss.str();
 }
 
+void ue4::game_framework::a_actor::enable_input(ue4::game_framework::a_player_controller* player_controller) {
+	struct {
+		ue4::game_framework::a_player_controller* player_controller;
+	} params{};
+
+	params.player_controller = player_controller;
+
+	const auto flags = ue4::sdk::enable_input->flags;
+	ue4::sdk::enable_input->flags |= 0x00000400;
+
+	ue4::sdk::process_event(this, ue4::sdk::enable_input, &params);
+	ue4::sdk::enable_input->flags = flags;
+}
+
+void ue4::game_framework::a_actor::disable_input(ue4::game_framework::a_player_controller* player_controller) {
+	struct {
+		ue4::game_framework::a_player_controller* player_controller;
+	} params{};
+
+	params.player_controller = player_controller;
+
+	const auto flags = ue4::sdk::disable_input->flags;
+	ue4::sdk::disable_input->flags |= 0x00000400;
+
+	ue4::sdk::process_event(this, ue4::sdk::disable_input, &params);
+	ue4::sdk::disable_input->flags = flags;
+}
+
 std::tuple<ue4::containers::f_string, ue4::math::color, float> ue4::game_framework::a_actor::get_actor_info(ue4::game_framework::a_pawn* my_player) {
-	if (this->is_a(ue4::sdk::werewolf))
-		return { L"werewolf", { 1.f, 0.f, 0.f, 1.f}, 0.f };
-	if (this->is_a(ue4::sdk::wart))
-		return { L"wart", { 1.f, 0.f, 0.f, 1.f}, 0.f };
-	if (this->is_a(ue4::sdk::doll_master))
-		return { L"doll_master", { 1.f, 0.f, 0.f, 1.f}, 0.f };
-	if (this->is_a(ue4::sdk::doll_minion))
-		return { L"doll_minion", { 1.f, 0.f, 0.f, 1.f}, 0.f };
+	
+	// monsters
+	{
+		const auto color = ue4::math::color{
+			variables::players::monster_color[0],
+			variables::players::monster_color[1],
+			variables::players::monster_color[2],
+			variables::players::monster_color[3]
+		};
 
-	if (this->is_a(ue4::sdk::cheerleader))
-		return { L"gloria", { 1.f, 1.f, 1.f, 1.f}, 0.f };
-	if (this->is_a(ue4::sdk::jock))
-		return { L"brett", { 1.f, 1.f, 1.f, 1.f}, 0.f };
-	if (this->is_a(ue4::sdk::outsider))
-		return { L"jess", { 1.f, 1.f, 1.f, 1.f}, 0.f };
-	if (this->is_a(ue4::sdk::punk))
-		return { L"leo", { 1.f, 1.f, 1.f, 1.f}, 0.f };
-	if (this->is_a(ue4::sdk::virgin))
-		return { L"faith", { 1.f, 1.f, 1.f, 1.f}, 0.f };
-
-	if (this->is_a(ue4::sdk::lockbox))
-		return { L"lockbox", { 0.20f, 0.52f, 0.92f, 1.f }, 50.f };
-	if (this->is_a(ue4::sdk::noisemaker))
-		return { L"noise_maker", { 0.20f, 0.52f, 0.92f, 1.f}, 30.f };
-	if (this->is_a(ue4::sdk::pills))
-		return { L"candy_bar", { 0.20f, 0.52f, 0.92f, 1.f}, 30.f };
-	if (this->is_a(ue4::sdk::adrenaline))
-		return { L"pop_can", { 0.20f, 0.52f, 0.92f, 1.f}, 30.f };
-	if (this->is_a(ue4::sdk::walkie))
-		return { L"walkie_talkie", { 0.20f, 0.52f, 0.92f, 1.f}, 30.f };
-	if (this->is_a(ue4::sdk::vending_machine))
-		return { L"vending_machine", { 0.71f, 0.27f, 0.92f, 1.f}, 30.f };
-	if (this->is_a(ue4::sdk::basket))
-		return { L"trashbox", { 0.20f, 0.52f, 0.92f, 1.f}, 30.f };
-	if (this->is_a(ue4::sdk::life_essence) && my_player->get_spectral())
-		return { L"luma", { 0.20f, 0.52f, 0.92f, 1.f}, 30.f };
-	if (this->is_a(ue4::sdk::medkit))
-		return { L"healing_station", { 0.71f, 0.27f, 0.92f, 1.f}, 30.f };
-	if (this->is_a(ue4::sdk::trap))
-		return { L"trap", { 1.f, 0.f, 0.f, 1.f}, 30.f };
-
-	if (this->is_a(ue4::sdk::life_essence) && my_player->get_spectral()) {
-
+		if (this->is_a(ue4::sdk::werewolf))
+			return { L"werewolf", color, 0.f };
+		if (this->is_a(ue4::sdk::wart))
+			return { L"wart", color, 0.f };
+		if (this->is_a(ue4::sdk::doll_master))
+			return { L"doll_master", color, 0.f };
+		if (this->is_a(ue4::sdk::doll_minion))
+			return { L"doll_minion", color, 0.f };
 	}
 
-	if (this->is_a(ue4::sdk::station_base)) {
-		const auto station_name = reinterpret_cast<vhs::station::a_station_base*>(this)->get_station_name();
-		const auto percent = reinterpret_cast<vhs::station::a_station_base*>(this)->get_crafting_percent(my_player->player_state, my_player, reinterpret_cast<vhs::station::a_station_base*>(this)->get_station_weapon_type());
-		const auto distance = my_player->get_distance_to_string(this);
+	// teens
+	{
+		const auto color = ue4::math::color{
+			variables::players::teen_color[0],
+			variables::players::teen_color[1],
+			variables::players::teen_color[2],
+			variables::players::teen_color[3]
+		};
 
-		std::wstring name;
-		name.append(station_name.first.c_str()).append(L" - ").append(percent).append(L"%");
+		if (this->is_a(ue4::sdk::cheerleader))
+			return { L"gloria", color, 0.f };
+		if (this->is_a(ue4::sdk::jock))
+			return { L"brett", color, 0.f };
+		if (this->is_a(ue4::sdk::outsider))
+			return { L"jess", color, 0.f };
+		if (this->is_a(ue4::sdk::punk))
+			return { L"leo", color, 0.f };
+		if (this->is_a(ue4::sdk::virgin))
+			return { L"faith", color, 0.f };
+	}
 
-		return { name.c_str(), station_name.second, 100.f };
+	// entities
+	{
+		if (this->is_a(ue4::sdk::lockbox) && variables::entities::lockbox) {
+			const auto color = ue4::math::color{
+				variables::entities::lockbox_color[0],
+				variables::entities::lockbox_color[1],
+				variables::entities::lockbox_color[2],
+				variables::entities::lockbox_color[3]
+			};
+
+			return { L"lockbox", color, variables::entities::max_distance };
+		}
+
+		if (this->is_a(ue4::sdk::noisemaker) && variables::entities::noisemaker) {
+			const auto color = ue4::math::color{
+				variables::entities::noisemaker_color[0],
+				variables::entities::noisemaker_color[1],
+				variables::entities::noisemaker_color[2],
+				variables::entities::noisemaker_color[3]
+			};
+
+			return { L"noisemaker", color, variables::entities::max_distance };
+		}
+
+		if (this->is_a(ue4::sdk::pills) && variables::entities::pills) {
+			const auto color = ue4::math::color{
+				variables::entities::pills_color[0],
+				variables::entities::pills_color[1],
+				variables::entities::pills_color[2],
+				variables::entities::pills_color[3]
+			};
+
+			return { L"candy", color, variables::entities::max_distance };
+		}
+
+		if (this->is_a(ue4::sdk::adrenaline) && variables::entities::adrenaline) {
+			const auto color = ue4::math::color{
+				variables::entities::adrenaline_color[0],
+				variables::entities::adrenaline_color[1],
+				variables::entities::adrenaline_color[2],
+				variables::entities::adrenaline_color[3]
+			};
+
+			return { L"can", color, variables::entities::max_distance };
+		}
+
+		if (this->is_a(ue4::sdk::walkie) && variables::entities::walkie) {
+			const auto color = ue4::math::color{
+				variables::entities::walkie_color[0],
+				variables::entities::walkie_color[1],
+				variables::entities::walkie_color[2],
+				variables::entities::walkie_color[3]
+			};
+
+			return { L"walkie", color, variables::entities::max_distance };
+		}
+
+		if (this->is_a(ue4::sdk::vending) && variables::entities::vending) {
+			const auto color = ue4::math::color{
+				variables::entities::vending_color[0],
+				variables::entities::vending_color[1],
+				variables::entities::vending_color[2],
+				variables::entities::vending_color[3]
+			};
+
+			return { L"vending", color, variables::entities::max_distance };
+		}
+
+		if (this->is_a(ue4::sdk::basket) && variables::entities::basket) {
+			const auto color = ue4::math::color{
+				variables::entities::basket_color[0],
+				variables::entities::basket_color[1],
+				variables::entities::basket_color[2],
+				variables::entities::basket_color[3]
+			};
+
+			return { L"trashbox", color, variables::entities::max_distance };
+		}
+
+		if (this->is_a(ue4::sdk::station_base) && variables::entities::station) {
+			const auto station_name = reinterpret_cast<vhs::station::a_station_base*>(this)->get_station_name();
+			const auto percent = reinterpret_cast<vhs::station::a_station_base*>(this)->get_crafting_percent(my_player->player_state, my_player, reinterpret_cast<vhs::station::a_station_base*>(this)->get_station_weapon_type());
+			const auto distance = my_player->get_distance_to_string(this);
+
+			std::wstring name;
+			name.append(station_name.first.c_str()).append(L" - ").append(percent).append(L"%");
+
+			return { name.c_str(), station_name.second, variables::entities::max_distance };
+		}
+
+		if ((this->is_a(ue4::sdk::life_essence) && my_player->get_spectral()) && variables::entities::life_essence) {
+			const auto color = ue4::math::color{
+				variables::entities::life_essence_color[0],
+				variables::entities::life_essence_color[1],
+				variables::entities::life_essence_color[2],
+				variables::entities::life_essence_color[3]
+			};
+
+			return { L"luma", color, variables::entities::max_distance };
+		}
+
+		if (this->is_a(ue4::sdk::medkit) && variables::entities::medkit) {
+			const auto color = ue4::math::color{
+				variables::entities::medkit_color[0],
+				variables::entities::medkit_color[1],
+				variables::entities::medkit_color[2],
+				variables::entities::medkit_color[3]
+			};
+
+			return { L"medkit", color, variables::entities::max_distance };
+		}
+
+		if (this->is_a(ue4::sdk::trap) && variables::entities::trap) {
+			const auto color = ue4::math::color{
+				variables::entities::trap_color[0],
+				variables::entities::trap_color[1],
+				variables::entities::trap_color[2],
+				variables::entities::trap_color[3]
+			};
+
+			return { L"trap", color, variables::entities::max_distance };
+		}
 	}
 
 	return { L"none", { 0.f, 0.f, 0.f, 1.f }, 0.f };
