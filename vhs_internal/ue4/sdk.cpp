@@ -17,7 +17,7 @@ bool ue4::sdk::initialize() {
 	ue4::sdk::bone_matrix = utils::pattern_scan(main, _("48 8B C4 48 89 58 08 48 89 70 10 57 48 81 EC ? ? ? ? F6"));
 	if (!ue4::sdk::bone_matrix) throw std::runtime_error(_("failed to get ue4::sdk::bone_matrix"));
 
-	ue4::sdk::view_point = utils::pattern_scan(main, _("4C 8B DC 53 55 56 57 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 84 24 ? ? ? ? 4D 89"));
+	ue4::sdk::view_point = utils::pattern_scan(main, _("4C 8B DC 53 55 56 57 48 81 EC 88 06"));
 	if (!ue4::sdk::view_point) throw std::runtime_error(_("failed to get ue4::sdk::view_point"));
 
 	// u_canvas
@@ -56,18 +56,19 @@ bool ue4::sdk::initialize() {
 	ue4::sdk::get_target_value = ue4::core_object::objects->find(_("Function Game.BarTimingMinigame.GetTargetValue"));
 	ue4::sdk::submit_value = ue4::core_object::objects->find(_("Function Game.SkillTestMinigameBase.ServerSubmitValue"));
 
-	// killers
+	// monsters
 	ue4::sdk::werewolf = ue4::core_object::objects->find(_("BlueprintGeneratedClass Werewolf_BP.Werewolf_BP_C"));
 	ue4::sdk::wart = ue4::core_object::objects->find(_("BlueprintGeneratedClass Toad_BP.Toad_BP_C"));
 	ue4::sdk::doll_master = ue4::core_object::objects->find(_("BlueprintGeneratedClass DollMaster_BP.DollMaster_BP_C"));
 	ue4::sdk::doll_minion = ue4::core_object::objects->find(_("BlueprintGeneratedClass DollMinion_BP.DollMinion_BP_C"));
 
-	// survivors
+	// teens
 	ue4::sdk::cheerleader = ue4::core_object::objects->find(_("BlueprintGeneratedClass Cheerleader_BP.Cheerleader_BP_C"));
 	ue4::sdk::jock = ue4::core_object::objects->find(_("BlueprintGeneratedClass Jock_BP.Jock_BP_C"));
 	ue4::sdk::outsider = ue4::core_object::objects->find(_("BlueprintGeneratedClass Outsider_BP.Outsider_BP_C"));
 	ue4::sdk::punk = ue4::core_object::objects->find(_("BlueprintGeneratedClass Punk_BP.Punk_BP_C"));
 	ue4::sdk::virgin = ue4::core_object::objects->find(_("BlueprintGeneratedClass Virgin_BP.Virgin_BP_C"));
+	ue4::sdk::free_spirit = ue4::core_object::objects->find(_("BlueprintGeneratedClass FreeSpirit_BP.FreeSpirit_BP_C"));
 
 	// items
 	ue4::sdk::lockbox = ue4::core_object::objects->find(_("Class Game.SearchableLockbox"));

@@ -46,18 +46,19 @@ namespace ue4::sdk {
 	inline ue4::core_object::u_object* get_target_value;
 	inline ue4::core_object::u_object* submit_value;
 
-	// killers
+	// monsters
 	inline ue4::core_object::u_object* werewolf;
 	inline ue4::core_object::u_object* wart;
 	inline ue4::core_object::u_object* doll_master;
 	inline ue4::core_object::u_object* doll_minion;
 
-	// survivors
+	// teens
 	inline ue4::core_object::u_object* cheerleader;
 	inline ue4::core_object::u_object* jock;
 	inline ue4::core_object::u_object* outsider;
 	inline ue4::core_object::u_object* punk;
 	inline ue4::core_object::u_object* virgin;
+	inline ue4::core_object::u_object* free_spirit;
 
 	// items
 	inline ue4::core_object::u_object* lockbox;

@@ -29,6 +29,8 @@ void menu::handle_input(ue4::game_framework::a_pawn* my_player, ue4::game_framew
 	}
 }
 
+#include <array>
+
 void menu::render() {
 	auto& style = ImGui::GetStyle();
 	auto& io = ImGui::GetIO();
@@ -54,14 +56,14 @@ void menu::render() {
 
 	ImGui::BeginChild(_("tabs"), ImVec2{ 150, 0 }, true);
 
-	static constexpr const char* tabs[]{
-		"players",
-		"entities",
-		"misc"
+	std::vector<std::string> tabs = {
+		_("players"),
+		_("entities"),
+		_("misc")
 	};
 
-	for (std::size_t i = 0; i < IM_ARRAYSIZE(tabs); ++i) {
-		if (ImGui::Selectable(tabs[i], selected_tab == i)) {
+	for (std::size_t i = 0; i < tabs.size(); ++i) {
+		if (ImGui::Selectable(tabs[i].c_str(), selected_tab == i)) {
 			selected_tab = i;
 		}
 	}
@@ -78,83 +80,83 @@ void menu::render() {
 			ImGui::Separator();
 			ImGui::Spacing();
 
-			ImGui::Checkbox("name", &variables::players::name);
-			ImGui::Checkbox("skeleton", &variables::players::skeleton);
-			ImGui::Checkbox("weapon", &variables::players::weapon);
+			ImGui::Checkbox(_("name"), &variables::players::name);
+			ImGui::Checkbox(_("skeleton"), &variables::players::skeleton);
+			ImGui::Checkbox(_("weapon"), &variables::players::weapon);
 
 			ImGui::Spacing();
 			ImGui::Spacing();
 
-			ImGui::Text("teen color");
+			ImGui::Text(_("teen color"));
 			ImGui::SameLine();
-			ImGui::ColorEdit4(("##teen_color"), variables::players::teen_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
+			ImGui::ColorEdit4((_("##teen_color")), variables::players::teen_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
 
-			ImGui::Text("monster color");
+			ImGui::Text(_("monster color"));
 			ImGui::SameLine();
-			ImGui::ColorEdit4(("##monster_color"), variables::players::monster_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
+			ImGui::ColorEdit4((_("##monster_color")), variables::players::monster_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
 
 			break;
 		case 1:
-			ImGui::Text("entities esp");
+			ImGui::Text(_("entities esp"));
 			ImGui::Separator();
 			ImGui::Spacing();
 
-			ImGui::Checkbox("lockbox", &variables::entities::lockbox);
+			ImGui::Checkbox(_("lockbox"), &variables::entities::lockbox);
 			ImGui::SameLine();
-			ImGui::ColorEdit4(("##lockbox_color"), variables::entities::lockbox_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
+			ImGui::ColorEdit4((_("##lockbox_color")), variables::entities::lockbox_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
 
-			ImGui::Checkbox("noisemaker", &variables::entities::noisemaker);
+			ImGui::Checkbox(_("noisemaker"), &variables::entities::noisemaker);
 			ImGui::SameLine();
-			ImGui::ColorEdit4(("##noisemaker_color"), variables::entities::noisemaker_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
+			ImGui::ColorEdit4((_("##noisemaker_color")), variables::entities::noisemaker_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
 
-			ImGui::Checkbox("pills", &variables::entities::pills);
+			ImGui::Checkbox(_("pills"), &variables::entities::pills);
 			ImGui::SameLine();
-			ImGui::ColorEdit4(("##pills_color"), variables::entities::pills_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
+			ImGui::ColorEdit4((_("##pills_color")), variables::entities::pills_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
 
-			ImGui::Checkbox("adrenaline", &variables::entities::adrenaline);
+			ImGui::Checkbox(_("adrenaline"), &variables::entities::adrenaline);
 			ImGui::SameLine();
-			ImGui::ColorEdit4(("##adrenaline_color"), variables::entities::adrenaline_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
+			ImGui::ColorEdit4((_("##adrenaline_color")), variables::entities::adrenaline_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
 
-			ImGui::Checkbox("walkie", &variables::entities::walkie);
+			ImGui::Checkbox(_("walkie"), &variables::entities::walkie);
 			ImGui::SameLine();
-			ImGui::ColorEdit4(("##walkie_color"), variables::entities::walkie_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
+			ImGui::ColorEdit4((_("##walkie_color")), variables::entities::walkie_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
 
-			ImGui::Checkbox("window", &variables::entities::vending);
+			ImGui::Checkbox(_("vending"), &variables::entities::vending);
 			ImGui::SameLine();
-			ImGui::ColorEdit4(("##vending_color"), variables::entities::vending_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
+			ImGui::ColorEdit4((_("##vending_color")), variables::entities::vending_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
 
-			ImGui::Checkbox("basket", &variables::entities::basket);
+			ImGui::Checkbox(_("trashbox"), &variables::entities::basket);
 			ImGui::SameLine();
-			ImGui::ColorEdit4(("##basket_color"), variables::entities::basket_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
+			ImGui::ColorEdit4((_("##trashbox_color")), variables::entities::basket_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
 
-			ImGui::Checkbox("station", &variables::entities::station);
+			ImGui::Checkbox(_("station"), &variables::entities::station);
 
-			ImGui::Checkbox("medkit", &variables::entities::medkit);
+			ImGui::Checkbox(_("medkit"), &variables::entities::medkit);
 			ImGui::SameLine();
-			ImGui::ColorEdit4(("##medkit_color"), variables::entities::medkit_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
+			ImGui::ColorEdit4(_("##medkit_color"), variables::entities::medkit_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
 
-			ImGui::Checkbox("life_essence", &variables::entities::life_essence);
+			ImGui::Checkbox(_("luma"), &variables::entities::life_essence);
 			ImGui::SameLine();
-			ImGui::ColorEdit4(("##life_essence_color"), variables::entities::life_essence_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
+			ImGui::ColorEdit4(_("##luma_color"), variables::entities::life_essence_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
 
-			ImGui::Checkbox("trap", &variables::entities::trap);
+			ImGui::Checkbox(_("trap"), &variables::entities::trap);
 			ImGui::SameLine();
-			ImGui::ColorEdit4(("#trap_color"), variables::entities::trap_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
+			ImGui::ColorEdit4(_("#trap_color"), variables::entities::trap_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
 
 			ImGui::Spacing();
 			ImGui::Spacing();
 
-			ImGui::Text("max distance");
-			ImGui::SliderFloat("##max_distance", &variables::entities::max_distance, 0.f, 100.f, "%.3gm", 1.f);
+			ImGui::Text(_("max distance"));
+			ImGui::SliderFloat(_("##max_distance"), &variables::entities::max_distance, 0.f, 100.f, _("%.3gm"), 1.f);
 			break;
 		case 2:
-			ImGui::Text("misc");
+			ImGui::Text(_("misc"));
 			ImGui::Separator();
 			ImGui::Spacing();
 
-			ImGui::Checkbox("auto skillcheck", &variables::misc::auto_skillcheck);
-			ImGui::Checkbox("fov changer", &variables::misc::fov_changer);
-			ImGui::SliderFloat("##fov_value", &variables::misc::fov_value, 50.f, 150.f, "%.3g", 1.f);
+			ImGui::Checkbox(_("auto skillcheck"), &variables::misc::auto_skillcheck);
+			ImGui::Checkbox(_("fov changer"), &variables::misc::fov_changer);
+			ImGui::SliderFloat(_("##fov_value"), &variables::misc::fov_value, 50.f, 150.f, _("%.3g"), 1.f);
 			break;
 		default:
 			break;

@@ -139,6 +139,8 @@ std::tuple<ue4::containers::f_string, ue4::math::color, float> ue4::game_framewo
 			return { L"leo", color, 0.f };
 		if (this->is_a(ue4::sdk::virgin))
 			return { L"faith", color, 0.f };
+		if (this->is_a(ue4::sdk::free_spirit))
+			return { L"spirit", color, 0.f };
 	}
 
 	// entities
@@ -228,7 +230,7 @@ std::tuple<ue4::containers::f_string, ue4::math::color, float> ue4::game_framewo
 			std::wstring name;
 			name.append(station_name.first.c_str()).append(L" - ").append(percent).append(L"%");
 
-			return { name.c_str(), station_name.second, variables::entities::max_distance };
+			return { name.c_str(), station_name.second, variables::entities::max_distance};
 		}
 
 		if ((this->is_a(ue4::sdk::life_essence) && my_player->get_spectral()) && variables::entities::life_essence) {
@@ -265,7 +267,7 @@ std::tuple<ue4::containers::f_string, ue4::math::color, float> ue4::game_framewo
 		}
 	}
 
-	return { L"none", { 0.f, 0.f, 0.f, 1.f }, 0.f };
+	return { L"none", { 0.f, 0.f, 0.f, 0.f }, 0.f};
 }
 
 bool ue4::game_framework::a_actor::is_teen() {

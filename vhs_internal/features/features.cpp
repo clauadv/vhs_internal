@@ -1,23 +1,28 @@
 #include <includes.h>
 
 void features::run(const ue4::engine::u_world* world, ue4::game_framework::a_pawn* my_player, ue4::game_framework::a_player_controller* player_controller) {
-	auto players = world->game_state->player_array;
+	const auto& game_state = world->game_state;
+	if (!game_state) return;
+
+	auto players = game_state->player_array;
 	for (auto i = 0; i < players.size(); i++) {
+		if (!players.is_valid(i)) break;
+
 		const auto player = players[i];
 		if (!player) continue;
 
 		const auto pawn = player->pawn_private;
 		if (!pawn) continue;
-		if (pawn == my_player) {
-			features::misc::auto_skillcheck::run(my_player);
-
-			continue;
-		}
+		if (pawn == my_player) continue;
 
 		const auto mesh = pawn->mesh;
 		if (!mesh) continue;
 
+		const auto state = pawn->player_state;
+		if (!state) continue;
+
 		features::esp::players::draw(pawn, my_player, mesh, player_controller);
+		features::misc::auto_skillcheck::run(my_player);
 	}
 
 	auto levels = world->levels;
