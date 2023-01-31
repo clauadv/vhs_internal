@@ -42,5 +42,5 @@ std::pair<ue4::containers::f_string, ue4::math::color> vhs::weapon::a_weapon_bas
 	if (this->type == vhs::weapon::weapon_type::flame_mine)
 		return { L"flame mine", burn_color };
 
-	return { L"none", { 1.f, 0.f, 0.f, 1.f } };
+	return { L"none", { 0.f, 0.f, 0.f, 1.f } };
 }

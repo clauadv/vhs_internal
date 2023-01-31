@@ -13,7 +13,7 @@ std::pair<ue4::containers::f_string, ue4::math::color> vhs::station::a_station_b
 	if (this->type == vhs::station::damage_type::shock)
 		return { L"shock station", { 0.20f, 0.80f, 0.86f, 1.f } };
 
-	return { L"none", { 1.f, 0.f, 0.f, 1.f } };
+	return { L"none", { 0.f, 0.f, 0.f, 1.f } };
 }
 
 vhs::weapon::weapon_type vhs::station::a_station_base::get_station_weapon_type() {

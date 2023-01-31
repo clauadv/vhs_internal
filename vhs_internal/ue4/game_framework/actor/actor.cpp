@@ -269,7 +269,7 @@ std::tuple<ue4::containers::f_string, ue4::math::color, float> ue4::game_framewo
 		}
 	}
 
-	return { L"none", { 1.f, 0.f, 0.f, 0.f }, 0.f };
+	return { L"none", { 0.f, 0.f, 0.f, 0.f }, 0.f };
 }
 
 bool ue4::game_framework::a_actor::is_teen() {
