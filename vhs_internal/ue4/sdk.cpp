@@ -61,6 +61,7 @@ bool ue4::sdk::initialize() {
 	ue4::sdk::wart = ue4::core_object::objects->find(_("BlueprintGeneratedClass Toad_BP.Toad_BP_C"));
 	ue4::sdk::doll_master = ue4::core_object::objects->find(_("BlueprintGeneratedClass DollMaster_BP.DollMaster_BP_C"));
 	ue4::sdk::doll_minion = ue4::core_object::objects->find(_("BlueprintGeneratedClass DollMinion_BP.DollMinion_BP_C"));
+	ue4::sdk::deathwire = ue4::core_object::objects->find(_("BlueprintGeneratedClass Eradicator_BP.Eradicator_BP_C"));
 
 	// teens
 	ue4::sdk::cheerleader = ue4::core_object::objects->find(_("BlueprintGeneratedClass Cheerleader_BP.Cheerleader_BP_C"));

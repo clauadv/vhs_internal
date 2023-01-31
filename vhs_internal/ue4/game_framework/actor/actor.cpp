@@ -100,7 +100,7 @@ void ue4::game_framework::a_actor::disable_input(ue4::game_framework::a_player_c
 }
 
 std::tuple<ue4::containers::f_string, ue4::math::color, float> ue4::game_framework::a_actor::get_actor_info(ue4::game_framework::a_pawn* my_player) {
-	
+
 	// monsters
 	{
 		const auto color = ue4::math::color{
@@ -115,9 +115,11 @@ std::tuple<ue4::containers::f_string, ue4::math::color, float> ue4::game_framewo
 		if (this->is_a(ue4::sdk::wart))
 			return { L"wart", color, 0.f };
 		if (this->is_a(ue4::sdk::doll_master))
-			return { L"doll_master", color, 0.f };
+			return { L"doll master", color, 0.f };
 		if (this->is_a(ue4::sdk::doll_minion))
-			return { L"doll_minion", color, 0.f };
+			return { L"doll minion", color, 0.f };
+		if (this->is_a(ue4::sdk::deathwire))
+			return { L"deathwire", color, 0.f };
 	}
 
 	// teens
@@ -230,7 +232,7 @@ std::tuple<ue4::containers::f_string, ue4::math::color, float> ue4::game_framewo
 			std::wstring name;
 			name.append(station_name.first.c_str()).append(L" - ").append(percent).append(L"%");
 
-			return { name.c_str(), station_name.second, variables::entities::max_distance};
+			return { name.c_str(), station_name.second, variables::entities::max_distance };
 		}
 
 		if ((this->is_a(ue4::sdk::life_essence) && my_player->get_spectral()) && variables::entities::life_essence) {
@@ -267,7 +269,7 @@ std::tuple<ue4::containers::f_string, ue4::math::color, float> ue4::game_framewo
 		}
 	}
 
-	return { L"none", { 0.f, 0.f, 0.f, 0.f }, 0.f};
+	return { L"none", { 1.f, 0.f, 0.f, 0.f }, 0.f };
 }
 
 bool ue4::game_framework::a_actor::is_teen() {
@@ -282,7 +284,8 @@ bool ue4::game_framework::a_actor::is_teen() {
 
 bool ue4::game_framework::a_actor::is_monster() {
 	if (this->is_a(ue4::sdk::werewolf) || this->is_a(ue4::sdk::wart) ||
-		this->is_a(ue4::sdk::doll_master) || this->is_a(ue4::sdk::doll_minion)) {
+		this->is_a(ue4::sdk::doll_master) || this->is_a(ue4::sdk::doll_minion) ||
+		this->is_a(ue4::sdk::deathwire)) {
 
 		return true;
 	}

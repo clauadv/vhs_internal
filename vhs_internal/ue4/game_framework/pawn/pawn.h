@@ -8,7 +8,7 @@ namespace vhs::weapon {
 	class a_weapon_base;
 }
 
-namespace vhs::minigame{
+namespace vhs::minigame {
 	class a_minigame_base;
 }
 
@@ -21,10 +21,10 @@ namespace ue4::game_framework {
 		ue4::game_framework::a_player_state* player_state; // 0x240(0x08)
 		char pad_0002[0x38]; // 0x248(0x38)
 		ue4::components::u_skeletal_mesh_component* mesh; // 0x280(0x08)
-		char pad_0003[0x810]; // 0x288(0x810)
-		vhs::minigame::a_minigame_base* minigame; // 0xa98(0x08)
-		char pad_0004[0x6a0]; // 0xaa0(0x6a0)
-		bool force_thirdperson; // 0x1140(0x01)
+		char pad_0003[0x840]; // 0x288(0x840)
+		vhs::minigame::a_minigame_base* minigame; // 0xac8(0x08)
+		char pad_0004[0x730]; // 0xad0(0x730)
+		bool force_thirdperson; // 0x1200(0x01)
 
 		void* get_spectral();
 		vhs::weapon::a_weapon_base* get_equipped_weapon();

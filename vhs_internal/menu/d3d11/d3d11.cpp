@@ -7,7 +7,7 @@ bool d3d11::initialize() {
 	window_class.lpfnWndProc = DefWindowProcA;
 	window_class.cbClsExtra = 0;
 	window_class.cbWndExtra = 0;
-	window_class.hInstance = GetModuleHandleA(nullptr);
+	window_class.hInstance = LI_FN(GetModuleHandleA)(nullptr);
 	window_class.hIcon = nullptr;
 	window_class.hCursor = nullptr;
 	window_class.hbrBackground = nullptr;

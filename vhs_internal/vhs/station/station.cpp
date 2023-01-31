@@ -2,18 +2,18 @@
 
 std::pair<ue4::containers::f_string, ue4::math::color> vhs::station::a_station_base::get_station_name() {
 	if (this->type == vhs::station::damage_type::burn)
-		return { L"burn_station", { 0.89f, 0.56f, 0.07f, 1.f } };
+		return { L"burn station", { 0.89f, 0.56f, 0.07f, 1.f } };
 
 	if (this->type == vhs::station::damage_type::holy)
-		return { L"holy_station", { 0.89f, 0.88f, 0.25f, 1.f } };
+		return { L"holy station", { 0.89f, 0.88f, 0.25f, 1.f } };
 
 	if (this->type == vhs::station::damage_type::occult)
-		return { L"occult_station", { 0.76f, 0.24f, 0.87f, 1.f } };
+		return { L"occult station", { 0.76f, 0.24f, 0.87f, 1.f } };
 
 	if (this->type == vhs::station::damage_type::shock)
-		return { L"shock_station", { 0.20f, 0.80f, 0.86f, 1.f } };
+		return { L"shock station", { 0.20f, 0.80f, 0.86f, 1.f } };
 
-	return { L"none", { 0.f, 0.f, 0.f, 1.f } };
+	return { L"none", { 1.f, 0.f, 0.f, 1.f } };
 }
 
 vhs::weapon::weapon_type vhs::station::a_station_base::get_station_weapon_type() {

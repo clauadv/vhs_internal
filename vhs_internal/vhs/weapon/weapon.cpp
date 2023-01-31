@@ -25,22 +25,22 @@ std::pair<ue4::containers::f_string, ue4::math::color> vhs::weapon::a_weapon_bas
 		return { L"flamethrower", burn_color };
 
 	if (this->type == vhs::weapon::weapon_type::rc_copter)
-		return { L"rc_copter", shock_color };
+		return { L"rc copter", shock_color };
 
 	if (this->type == vhs::weapon::weapon_type::static_shield)
-		return { L"static_shield", shock_color };
+		return { L"static shield", shock_color };
 
 	if (this->type == vhs::weapon::weapon_type::ray_gun)
-		return { L"ray_gun", shock_color };
+		return { L"ray gun", shock_color };
 
 	if (this->type == vhs::weapon::weapon_type::demon_sword)
-		return { L"demon_sword", occult_color };
+		return { L"demon sword", occult_color };
 
 	if (this->type == vhs::weapon::weapon_type::holy_staff)
-		return { L"sacred_staff", holy_color };
+		return { L"sacred staff", holy_color };
 
 	if (this->type == vhs::weapon::weapon_type::flame_mine)
-		return { L"flame_mine", burn_color };
+		return { L"flame mine", burn_color };
 
-	return { L"none", { 0.f, 0.f, 0.f, 1.f } };
+	return { L"none", { 1.f, 0.f, 0.f, 1.f } };
 }

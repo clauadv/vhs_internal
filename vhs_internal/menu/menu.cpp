@@ -29,8 +29,6 @@ void menu::handle_input(ue4::game_framework::a_pawn* my_player, ue4::game_framew
 	}
 }
 
-#include <array>
-
 void menu::render() {
 	auto& style = ImGui::GetStyle();
 	auto& io = ImGui::GetIO();
@@ -52,7 +50,7 @@ void menu::render() {
 
 	static std::uint32_t selected_tab = 0;
 	ImGui::SetNextWindowSize(ImVec2{ 560.f, 412.f }, ImGuiCond_Once);
-	ImGui::Begin(_("cheats.tw pt samp 2"), nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
+	ImGui::Begin(_("eu sunt programator"), nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
 
 	ImGui::BeginChild(_("tabs"), ImVec2{ 150, 0 }, true);
 

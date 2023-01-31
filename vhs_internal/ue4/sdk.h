@@ -51,6 +51,7 @@ namespace ue4::sdk {
 	inline ue4::core_object::u_object* wart;
 	inline ue4::core_object::u_object* doll_master;
 	inline ue4::core_object::u_object* doll_minion;
+	inline ue4::core_object::u_object* deathwire;
 
 	// teens
 	inline ue4::core_object::u_object* cheerleader;
